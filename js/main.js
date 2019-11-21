@@ -1,6 +1,8 @@
 //create global variables
 var storeItems = []; //empty array to have the store items
 var cartItems = []; //empty array to have the cart items
+var cart = new Cart(); //create a new Cart for the User
+var store = new Store(); //create a new Store for the app
 
 //state variables
 var initialized = false;
