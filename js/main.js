@@ -4,6 +4,9 @@ var cartItems = []; //empty array to have the cart items
 var cart = new Cart(); //create a new Cart for the User
 var store = new Store(); //create a new Store for the app
 
+//call function to add initial items to store
+addInitialItemsToStore();
+
 //state variables
 var initialized = false;
 
@@ -54,3 +57,7 @@ function updateTime(){
     currentTimeElements = document.querySelectorAll("div.currentTime");
     Array.from(currentTimeElements).forEach((element)=>element.innerHTML = currentTime);
 }//end of function updateTime
+
+function addInitialItemsToStore(){
+    
+}
