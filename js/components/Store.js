@@ -5,10 +5,10 @@ const Store = class {
 
     addItem(item){
         let response = {
-            success = false,
-            payload = null,
-            message = null,
-            errorMessage = null
+            success : false,
+            payload : null,
+            message : null,
+            errorMessage : null
         };
         try{
             this.items.push(item);
