@@ -5,7 +5,8 @@ var cart = new Cart(); //create a new Cart for the User
 var store = new Store(); //create a new Store for the app
 
 //call function to add initial items to store
-addInitialItemsToStore();
+console.log(addInitialItemsToStore(store));
+if(!(addInitialItemsToStore().success)) alert ("Problems on load initial storage items!");
 
 //state variables
 var initialized = false;
@@ -16,6 +17,8 @@ var options = {weekday:'short',year:'numeric',month:'short', day:'numeric', hour
 var currentTime = new Intl.DateTimeFormat('en-US',options).format(date); //variable that will store the current date and time;
 var currentTimeElements;
 var timer = window.setInterval(updateTime,1000);
+
+//the storage variable is a global defined by the inclusion of the file before main.js on index.html
 
 function initialize(){
     //call testing for main functionalities
@@ -52,12 +55,17 @@ function updateTime(){
     if(!initialized) return false;
     date = new Date();
     currentTime = new Intl.DateTimeFormat('en-US',options).format(date);
-    console.log(currentTime);
-    console.log("currentTimeElements inside updateTime: " ,currentTimeElements)
     currentTimeElements = document.querySelectorAll("div.currentTime");
     Array.from(currentTimeElements).forEach((element)=>element.innerHTML = currentTime);
 }//end of function updateTime
 
-function addInitialItemsToStore(){
-    
+function addInitialItemsToStore(store){
+    //the initialStorage variable is a global defined by the inclusion of the file before main.js on index.html
+    try{
+        initialStorage.forEach((item)=>store.push(item));
+    } catch(error){
+        return {success:false,errorMessage:error.message};
+    }
+    return{success:true,message:"items added with success"};
+
 }
