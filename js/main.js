@@ -5,8 +5,8 @@ var cart = new Cart(); //create a new Cart for the User
 var store = new Store(); //create a new Store for the app
 
 //call function to add initial items to store
-console.log(addInitialItemsToStore(store));
 if(!(addInitialItemsToStore().success)) alert ("Problems on load initial storage items!");
+console.log("store=",store);
 
 //state variables
 var initialized = false;
@@ -59,13 +59,20 @@ function updateTime(){
     Array.from(currentTimeElements).forEach((element)=>element.innerHTML = currentTime);
 }//end of function updateTime
 
-function addInitialItemsToStore(store){
+function addInitialItemsToStore(){
     //the initialStorage variable is a global defined by the inclusion of the file before main.js on index.html
     try{
-        initialStorage.forEach((item)=>store.push(item));
+        initialStorage.forEach((item)=>store.addItem(item));
     } catch(error){
         return {success:false,errorMessage:error.message};
     }
     return{success:true,message:"items added with success"};
 
+}
+
+function generateItemCardMarkup(item){
+    var card = document.createElement("div");
+    card.setAttribute("class","storeItem");
+    card.setAttribute("id",item.id);
+    
 }
