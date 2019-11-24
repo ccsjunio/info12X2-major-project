@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    flex-flow: column;
+}
+
+main{
+    order: 2;
+    flex:1 100%;
+}
+
+header{
+    order: 1;
+    flex:1 100%;
+}
+
+footer{
+    order: 3;
+    flex:1 100%;
+}
+
+
+

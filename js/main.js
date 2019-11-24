@@ -4,6 +4,18 @@ var cartItems = []; //empty array to have the cart items
 var cart = new Cart(); //create a new Cart for the User
 var store = new Store(); //create a new Store for the app
 
+//constants
+const URL_ORIGIN = window.location.origin;
+const URL_PATHNAME = window.location.pathname;
+const URL_HOSTNAME = window.location.hostname;
+const URL_HOST = window.location.host;
+const URL_PUBLIC = URL_ORIGIN + URL_PATHNAME.substring(0,URL_PATHNAME.lastIndexOf("/")) + "/public";
+
+console.log("URL_ORIGIN = ", URL_ORIGIN);
+console.log("URL_PATHNAME = ", URL_PATHNAME);
+console.log("URL_HOST = ", URL_HOST);
+console.log("URL_HOSTNAME = ", URL_HOSTNAME);
+
 //call function to add initial items to store
 if(!(addInitialItemsToStore().success)) alert ("Problems on load initial storage items!");
 console.log("store=",store);
@@ -24,7 +36,9 @@ function initialize(){
     //call testing for main functionalities
     generalTest();
 
-
+    //populate categories filter
+    populateCatalogFilter();
+    storeItemsContentMarkup();
     initialized = true;
 }
 
@@ -52,6 +66,7 @@ function generalTest(){
 }
 
 function updateTime(){
+    //executes only if the page is already initialized
     if(!initialized) return false;
     date = new Date();
     currentTime = new Intl.DateTimeFormat('en-US',options).format(date);
@@ -62,6 +77,8 @@ function updateTime(){
 function addInitialItemsToStore(){
     //the initialStorage variable is a global defined by the inclusion of the file before main.js on index.html
     try{
+        //use method on class Storage to add a item
+        //picking items from "initialStorage"
         initialStorage.forEach((item)=>store.addItem(item));
     } catch(error){
         return {success:false,errorMessage:error.message};
@@ -75,4 +92,100 @@ function generateItemCardMarkup(item){
     card.setAttribute("class","storeItem");
     card.setAttribute("id",item.id);
     
+}
+
+function populateCatalogFilter(){
+    //assign variable to catalog filter selection
+    var selectionElement = document.getElementById("catalogCategorySelection");
+    //initialize categories array
+    var categories = [];
+    store.items.forEach((item)=>{
+        categories.indexOf(item.category)===-1?categories.push(item.category):null
+    });
+    //sort category items in ascendent alphabetical
+    categories.sortAscendant();
+    console.log("categories array filled out:",categories);
+
+    //iterate through each item of categories
+    //each iteration creates an option element
+    //and assign proper values and attributes
+    //according to the category item
+    var category;
+    categories.forEach((item)=>{
+        console.log("category in the loop=",item);
+        category = document.createElement("option");
+        category.value = item.replace(/\s+/gi,"").toLowerCase();
+        category.innerHTML = item;
+        selectionElement.appendChild(category);
+        return;
+    });//end of categories foreach
+}   
+
+
+function storeItemsContentMarkup(){
+    var storeItemsContentElement = document.createElement("div");
+    storeItemsContentElement.id = "storeItemsContainer";
+    console.log("store = ",store);
+    //iterate through store items
+    store.items.forEach((item)=>{
+        console.log("item=>",item);
+        let row = document.createElement("div");
+        row.className = "storeItemsRow";
+        
+        let idColumn = document.createElement("div");
+        idColumn.className = "storeItemColumn storeItemIdColumn";
+        idColumn.innerHTML = item.id;
+        row.appendChild(idColumn);
+
+        let nameColumn = document.createElement("div");
+        nameColumn.className = "storeItemColumn storeItemNameColumn";
+        nameColumn.innerHTML = item.name;
+        row.appendChild(nameColumn);
+
+        let imageColumn = document.createElement("div");
+        imageColumn.className = "storeItemColumn storeItemImageColumn";
+        let imageElement = document.createElement("img");
+        imageElement.src = URL_PUBLIC + "/images/"+item.image;
+        imageElement.alt = "image of " + item.name;
+        imageColumn.appendChild(imageElement);
+        row.appendChild(imageColumn);
+
+        let priceColumn = document.createElement("div");
+        priceColumn.className = "storeItemColumn storeItemPriceColumn";
+        priceColumn.innerHTML = item.price;
+        row.appendChild(priceColumn);
+
+        storeItemsContentElement.appendChild(row);
+    });//end of iteration through store item
+    document.getElementById("catalogList").appendChild(storeItemsContentElement);
+
+    return storeItemsContentElement;
+}
+
+//Sorts contents of an array ascendantly
+//based on example given at 
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+Array.prototype.sortAscendant = function (){
+    this.sort((a,b)=>{
+        category1 = a.toLowerCase();//to lower case make the coparison to be case insensitive
+        category2 = b.toLowerCase();//to lower case make the coparison to be case insensitive
+        if(category1 < category2) return -1;
+        if(category1 > category2) return 1;
+        return 0;
+    })
+    return this;
+}
+
+//Sorts contents of an array descendantly
+//based on example given at 
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+Array.prototype.sortDescendant = function (){
+    this.sort((a,b)=>{
+        category1 = a.toLowerCase();//to lower case make the coparison to be case insensitive
+        category2 = b.toLowerCase();//to lower case make the coparison to be case insensitive
+        if(category1 < category2) return 1;
+        if(category1 > category2) return -1;
+        return 0;
+    })
+    return this;
 }

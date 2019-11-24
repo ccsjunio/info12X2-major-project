@@ -1,0 +1,32 @@
+#storeItemsContainer{
+    display: flex;
+    flex-flow: column;
+}
+
+.storeItemsRow{
+    flex: 1 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.storeItemsColumn{
+    flex: 1 100%;
+}
+
+.storeItemImageColumn{
+    height: 100px;
+}
+
+.storeItemImageColumn img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.storeItemNameColumn{
+
+}
+
+.storeItemIdColumn{
+
+}
+

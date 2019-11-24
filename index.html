@@ -1,5 +1,5 @@
 <!doctype html>
-<hmtl lang="en-US">
+<html lang="en-US">
     <head>
         <title>MAJOR PROJECT CROSSOVER INFO1232 X INFO1252</title>
         <meta charset="UTF-8" />
@@ -16,6 +16,7 @@
 
         <!-- link to style pages -->
         <link href="./styles/main.css" type="text/css" rel="stylesheet" />
+        <link href="./styles/storeItemsContainer.css" type="text/css" rel="stylesheet" />
 
         <!-- link to javascript files -->
         <script src="./js/components/Cart.js" type="text/javascript"></script>
@@ -27,6 +28,19 @@
     </head>
     <body onload="initialize();">
         <main>
+            <section id="catalog">
+                <article id="filter">
+                    <form id="catalogFilter" action="" method="POST">
+                        <select id="catalogCategorySelection">
+                            <option value="all">show all categories</option>
+                        </select> <!-- catalogCategorySelection -->
+                        <button type="button" id="buttonClearFilters">clear all filters</button>
+                    </form><!-- end of form catalogFilter -->
+                </article><!-- end of article filter -->
+                <article id="catalogList">
+
+                </article><!-- end of catalog list -->
+            </section>
         </main>
         <header>
             <div id="logo">
@@ -51,4 +65,4 @@
         <footer>
         </footer>
     </body>
-</hmtl>
+</html>
