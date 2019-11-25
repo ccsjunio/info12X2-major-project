@@ -39,7 +39,7 @@ function initialize(){
 
     //populate categories filter
     populateCatalogFilter();
-    storeItemsContentMarkup();
+    displayStoreItems();
     initialized = true;
 }
 
@@ -123,12 +123,28 @@ function populateCatalogFilter(){
 }   
 
 
-function storeItemsContentMarkup(){
+function displayStoreItems(){
+    //collect category filter element to variable
+    var categoryFilter = document.getElementById("catalogCategorySelection");
+    var categorySelected = categoryFilter.value;
+    console.log("category selected = ", categorySelected);
+
+    //assign filtered items according to category selected to a variable
+    //this variable will be used as the array that will serve as
+    //source to populate container
+    var filteredStoreItems = categorySelected=="all" ? filteredStoreItems = store.items.slice(0) : store.items.filter((item)=>item.category.replace(/\s+/gi,"").toLowerCase()===categorySelected);
+    console.log("filtered store items",filteredStoreItems);
+
+    //empty catalog list
+    document.getElementById("catalogList").innerHTML = "";
+
+    //create html element to contain store elements
     var storeItemsContentElement = document.createElement("div");
     storeItemsContentElement.id = "storeItemsContainer";
     console.log("store = ",store);
+
     //iterate through store items
-    store.items.forEach((item)=>{
+    filteredStoreItems.forEach((item)=>{
         console.log("item=>",item);
         let row = document.createElement("div");
         row.className = "storeItemsRow";
