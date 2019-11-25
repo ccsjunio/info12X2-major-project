@@ -1,6 +1,7 @@
 body{
     display: flex;
     flex-flow: column;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 main{
@@ -43,6 +44,11 @@ header nav ul#itemsMenu{
 
 header #logo{
     order:2;
+}
+
+header #logo img{
+    order:2;
+    height: 47px;
 }
 
 header nav .currentTime{

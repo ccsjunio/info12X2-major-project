@@ -3,6 +3,7 @@ var storeItems = []; //empty array to have the store items
 var cartItems = []; //empty array to have the cart items
 var cart = new Cart(); //create a new Cart for the User
 var store = new Store(); //create a new Store for the app
+var currencySymbol = "CAD$";
 
 //constants
 const URL_ORIGIN = window.location.origin;
@@ -25,7 +26,7 @@ var initialized = false;
 
 //initialize the current time and a timeout to update it each second
 var date = new Date();
-var options = {weekday:'short',year:'numeric',month:'short', day:'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric',};
+var options = {weekday:'short',year:'numeric',month:'short', day:'numeric', hour: 'numeric', minute: 'numeric'};
 var currentTime = new Intl.DateTimeFormat('en-US',options).format(date); //variable that will store the current date and time;
 var currentTimeElements;
 var timer = window.setInterval(updateTime,1000);
@@ -134,12 +135,12 @@ function storeItemsContentMarkup(){
         
         let idColumn = document.createElement("div");
         idColumn.className = "storeItemColumn storeItemIdColumn";
-        idColumn.innerHTML = item.id;
+        idColumn.innerHTML = "Code: " + item.id;
         row.appendChild(idColumn);
 
         let nameColumn = document.createElement("div");
         nameColumn.className = "storeItemColumn storeItemNameColumn";
-        nameColumn.innerHTML = item.name.substr(0,100) + (item.name.length>100 ? "..." : "");
+        nameColumn.innerHTML = item.name.substr(0,50) + (item.name.length>50 ? "..." : "");
         row.appendChild(nameColumn);
 
         let imageColumn = document.createElement("div");
@@ -152,12 +153,12 @@ function storeItemsContentMarkup(){
 
         let priceColumn = document.createElement("div");
         priceColumn.className = "storeItemColumn storeItemPriceColumn";
-        priceColumn.innerHTML = item.price;
+        priceColumn.innerHTML = currencySymbol + item.price.toFixed(2);
         row.appendChild(priceColumn);
 
         let qtyOnHandColumn = document.createElement("div");
         qtyOnHandColumn.className = "storeItemColumn storeItemQtyOnHandColumn";
-        qtyOnHandColumn.innerHTML = item.qtyOnHand;
+        qtyOnHandColumn.innerHTML = item.qtyOnHand + " in stock";
         row.appendChild(qtyOnHandColumn);
 
         let maxPerCustomerColumn = document.createElement("div");

@@ -31,22 +31,32 @@
 }
 
 .storeItemNameColumn{
-    order:2;
+    order:3;
+    padding:5px;
+    color:rgb(104, 104, 104);
 }
 
 .storeItemIdColumn{
     order:6;
+    padding:5px;
+    font-size: 0.8rem;
 }
 
 .storeItemPriceColumn{
-    order:3;
+    order:2;
+    color:rgb(1, 83, 1);
+    font-weight: bolder;
+    padding:5px;
 }
 
 .storeItemQtyOnHandColumn{
     order:4;
+    padding:5px;
 }
 
 .storeItemMaxPerCustomerColumn{
     order:5;
+    padding: 5px;
+
 }
 
