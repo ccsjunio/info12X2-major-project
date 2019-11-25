@@ -11,6 +11,42 @@ main{
 header{
     order: 1;
     flex:1 100%;
+    display: flex;
+}
+
+header nav{
+    display: flex;
+}
+
+header nav ul{
+    order:1;
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+header nav ul a{
+    text-decoration: none;
+}
+
+header nav ul li {
+    text-indent: none;
+    margin-left: 0px;
+}
+
+header nav ul#itemsMenu{
+    cursor:pointer;
+}
+
+header nav ul#itemsMenu{
+    display:none;
+}
+
+header #logo{
+    order:2;
+}
+
+header nav .currentTime{
+    order:3;
 }
 
 footer{

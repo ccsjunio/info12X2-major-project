@@ -1,12 +1,17 @@
 #storeItemsContainer{
-    display: flex;
-    flex-flow: column;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 .storeItemsRow{
-    flex: 1 100%;
     display: flex;
     flex-flow: column;
+    border: 1px solid rgb(121, 121, 121);
+    border-radius: 10px;
+    padding: 10px;
+    width: 87%;
+    margin-bottom: 4px;
+    justify-self: stretch;
 }
 
 .storeItemsColumn{
@@ -15,26 +20,33 @@
 
 .storeItemImageColumn{
     height: 100px;
+    text-align: center;
 }
 
 .storeItemImageColumn img{
     max-width: 100%;
     max-height: 100%;
+    order:1;
+    
 }
 
 .storeItemNameColumn{
-
+    order:2;
 }
 
 .storeItemIdColumn{
+    order:6;
+}
 
+.storeItemPriceColumn{
+    order:3;
 }
 
 .storeItemQtyOnHandColumn{
-
+    order:4;
 }
 
 .storeItemMaxPerCustomerColumn{
-
+    order:5;
 }
 
