@@ -139,7 +139,7 @@ function storeItemsContentMarkup(){
 
         let nameColumn = document.createElement("div");
         nameColumn.className = "storeItemColumn storeItemNameColumn";
-        nameColumn.innerHTML = item.name;
+        nameColumn.innerHTML = item.name.substr(0,100) + (item.name.length>100 ? "..." : "");
         row.appendChild(nameColumn);
 
         let imageColumn = document.createElement("div");
@@ -154,6 +154,16 @@ function storeItemsContentMarkup(){
         priceColumn.className = "storeItemColumn storeItemPriceColumn";
         priceColumn.innerHTML = item.price;
         row.appendChild(priceColumn);
+
+        let qtyOnHandColumn = document.createElement("div");
+        qtyOnHandColumn.className = "storeItemColumn storeItemQtyOnHandColumn";
+        qtyOnHandColumn.innerHTML = item.qtyOnHand;
+        row.appendChild(qtyOnHandColumn);
+
+        let maxPerCustomerColumn = document.createElement("div");
+        maxPerCustomerColumn.className = "storeItemColumn storeItemMaxPerCustomerColumn";
+        maxPerCustomerColumn.innerHTML = item.maxPerCustomer;
+        row.appendChild(maxPerCustomerColumn);
 
         storeItemsContentElement.appendChild(row);
     });//end of iteration through store item
