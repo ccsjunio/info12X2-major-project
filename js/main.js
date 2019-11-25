@@ -163,7 +163,7 @@ function storeItemsContentMarkup(){
 
         let maxPerCustomerColumn = document.createElement("div");
         maxPerCustomerColumn.className = "storeItemColumn storeItemMaxPerCustomerColumn";
-        maxPerCustomerColumn.innerHTML = item.maxPerCustomer;
+        maxPerCustomerColumn.innerHTML = "max " + item.maxPerCustomer + " items per customer";
         row.appendChild(maxPerCustomerColumn);
 
         storeItemsContentElement.appendChild(row);
