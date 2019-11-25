@@ -120,7 +120,45 @@ function populateCatalogFilter(){
         selectionElement.appendChild(category);
         return;
     });//end of categories foreach
-}   
+}
+
+function sortCatalogItems(){
+    //assign variable to sort selection
+    var sortSelectionElement = document.getElementById("catalogSort");
+    //verify which type of sort was chosen
+    var sortType = sortSelectionElement.value;
+    switch(sortType){
+        case "":
+            store.items.sortIdAscendant();
+        break;
+        case "alphabeticallyAscendant":
+            store.items.sortNameAscendant();
+        break;
+        case "alphabeticallyDescendant":
+            store.items.sortNameDescendant();
+        break;
+        case "priceLowToHigh":
+            store.items.sortPriceLowToHigh();
+        break;
+        case "priceHighToLow":
+            store.items.sortPriceHighToLow();
+        break;
+        case "evaluationHighToLow":
+
+        break;
+    }
+    displayStoreItems();
+}
+
+function clearAllFilters(){
+    //assign variable to category selection
+    var catalogCategorySelectionElement = document.getElementById("catalogCategorySelection");
+    catalogCategorySelectionElement.selectedIndex = 0;
+    var catalogSort = document.getElementById("catalogSort");
+    catalogSort.selectedIndex = 0;
+    store.items.sortIdAscendant();
+    displayStoreItems();
+}
 
 
 function displayStoreItems(){
@@ -210,6 +248,73 @@ Array.prototype.sortDescendant = function (){
     this.sort((a,b)=>{
         category1 = a.toLowerCase();//to lower case make the coparison to be case insensitive
         category2 = b.toLowerCase();//to lower case make the coparison to be case insensitive
+        if(category1 < category2) return 1;
+        if(category1 > category2) return -1;
+        return 0;
+    })
+    return this;
+}
+
+Array.prototype.sortPriceLowToHigh = function (){
+    this.sort((a,b)=>{
+        console.log("product a=",a);
+        price1 = a.price;//to lower case make the coparison to be case insensitive
+        price2 = b.price;//to lower case make the coparison to be case insensitive
+        if(price1 < price2) return -1;
+        if(price1 > price2) return 1;
+        return 0;
+    })
+    return this;
+}
+
+Array.prototype.sortPriceHighToLow = function (){
+    this.sort((a,b)=>{
+        price1 = a.price;//to lower case make the coparison to be case insensitive
+        price2 = b.price;//to lower case make the coparison to be case insensitive
+        if(price1 < price2) return 1;
+        if(price1 > price2) return -1;
+        return 0;
+    })
+    return this;
+}
+
+Array.prototype.sortNameAscendant = function (){
+    this.sort((a,b)=>{
+        category1 = a.name.toLowerCase();//to lower case make the coparison to be case insensitive
+        category2 = b.name.toLowerCase();//to lower case make the coparison to be case insensitive
+        if(category1 < category2) return -1;
+        if(category1 > category2) return 1;
+        return 0;
+    })
+    return this;
+}
+
+Array.prototype.sortNameDescendant = function (){
+    this.sort((a,b)=>{
+        category1 = a.name.toLowerCase();//to lower case make the coparison to be case insensitive
+        category2 = b.name.toLowerCase();//to lower case make the coparison to be case insensitive
+        if(category1 < category2) return 1;
+        if(category1 > category2) return -1;
+        return 0;
+    })
+    return this;
+}
+
+Array.prototype.sortIdAscendant = function (){
+    this.sort((a,b)=>{
+        category1 = a.id.toLowerCase();//to lower case make the coparison to be case insensitive
+        category2 = b.id.toLowerCase();//to lower case make the coparison to be case insensitive
+        if(category1 < category2) return -1;
+        if(category1 > category2) return 1;
+        return 0;
+    })
+    return this;
+}
+
+Array.prototype.sortIdDescendant = function (){
+    this.sort((a,b)=>{
+        category1 = a.id.toLowerCase();//to lower case make the coparison to be case insensitive
+        category2 = b.id.toLowerCase();//to lower case make the coparison to be case insensitive
         if(category1 < category2) return 1;
         if(category1 > category2) return -1;
         return 0;

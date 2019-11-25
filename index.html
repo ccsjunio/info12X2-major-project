@@ -35,8 +35,8 @@
                         <select id="catalogCategorySelection" onchange="displayStoreItems();">
                             <option value="all">show all categories</option>
                         </select> <!-- catalogCategorySelection -->
-                        <button type="button" id="buttonClearFilters">clear all filters</button>
-                        <select id="catalogSort">
+                        <button type="button" id="buttonClearFilters" onclick="clearAllFilters();">clear all filters</button>
+                        <select id="catalogSort" onchange="sortCatalogItems();">
                             <option value="">sort items</option>
                             <option value="alphabeticallyAscendant">A->Z</option>
                             <option value="alphabeticallyDescendant">Z->A</option>
