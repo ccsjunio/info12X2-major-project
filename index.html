@@ -36,7 +36,14 @@
                             <option value="all">show all categories</option>
                         </select> <!-- catalogCategorySelection -->
                         <button type="button" id="buttonClearFilters">clear all filters</button>
-                        <button type="button" id="buttonSortItems">sort items</button>
+                        <select id="catalogSort">
+                            <option value="">sort items</option>
+                            <option value="alphabeticallyAscendant">A->Z</option>
+                            <option value="alphabeticallyDescendant">Z->A</option>
+                            <option value="priceLowToHigh">Lowest Price</option>
+                            <option value="priceHighToLow">Highest Price</option>
+                            <option value="evaluationHighToLow">Customer Review</option>
+                        </select>
                     </form><!-- end of form catalogFilter -->
                 </article><!-- end of article filter -->
                 <article id="catalogList">
@@ -45,25 +52,30 @@
             </section>
         </main>
         <header>
-            <div id="logo">
-                <img src="./assets/logo/logoGobi.png" alt="logo image"/>
-            </div>
-            <nav>
-                <ul id="hamburguerMenu">
-                    <!-- source of this font: https://material.io/resources/icons/?icon=menu&style=baseline -->
-                    <li id="hamburguer"><i class="material-icons">menu</i></li>
-                </ul>
-                <ul id="itemsMenu">
-                    <li><a href="#">Catalog</a></li>
-                    <li><a href="#">Your cart</a></li>
-                    <li><a href="#">Administration</a>
-                        <ul>
-                            <li><a href="#">Manage Items</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <div id="greeting">
                 <div class="currentTime">CurrentTime</div>
-            </nav>
+            </div>
+            <div id="presentation_navigation">
+                <div id="logo">
+                        <img src="./assets/logo/logoGobi.png" alt="logo image"/>
+                </div>
+                <nav>
+                    <ul id="hamburguerMenu">
+                        <!-- source of this font: https://material.io/resources/icons/?icon=menu&style=baseline -->
+                        <li id="hamburguer"><i class="material-icons">menu</i></li>
+                    </ul>
+                    <ul id="itemsMenu">
+                        <li><a href="#">Catalog</a></li>
+                        <li><a href="#">Your cart</a></li>
+                        <li><a href="#">Administration</a>
+                            <ul>
+                                <li><a href="#">Manage Items</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
         </header>
         
         <footer>

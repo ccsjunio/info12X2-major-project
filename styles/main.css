@@ -13,14 +13,30 @@ header{
     order: 1;
     flex:1 100%;
     display: flex;
+    flex-flow: column;
+}
+
+header #greeting{
+    width:100%;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    padding:2px;
+}
+
+header #presentation_navigation{
+    display:flex;
+    flex-flow: row;
+    justify-content: space-between;
+
 }
 
 header nav{
+    order: 1;
     display: flex;
 }
 
 header nav ul{
-    order:1;
     list-style: none;
     padding-inline-start: 0;
 }
@@ -47,12 +63,11 @@ header #logo{
 }
 
 header #logo img{
-    order:2;
-    height: 47px;
+    height: 33px;
 }
 
-header nav .currentTime{
-    order:3;
+header .currentTime{
+    font-size: 0.7rem;
 }
 
 footer{
