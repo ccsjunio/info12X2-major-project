@@ -33,7 +33,7 @@ var date = new Date();
 var options = {weekday:'short',year:'numeric',month:'short', day:'numeric', hour: 'numeric', minute: 'numeric'};
 var currentTime = new Intl.DateTimeFormat('en-US',options).format(date); //variable that will store the current date and time;
 var currentTimeElements;
-var timer = window.setInterval(updateTime,1000);
+var timer = window.setInterval(updateTime,1000*60);
 
 //the storage variable is a global defined by the inclusion of the file before main.js on index.html
 
@@ -137,7 +137,7 @@ function populateCurrencyDropBox(){
         console.log("currencyOption element=",currencyOption);
         currencyOption.value = index;
         console.log("option innerHTML being inserted=",item.currencyName);
-        currencyOption.innerHTML = item.currencyName;
+        currencyOption.innerHTML = item.currencySymbol + "$";
         console.log("option = ",currencyOption);
         currencySelectionElement.appendChild(currencyOption);
     });

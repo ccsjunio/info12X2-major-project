@@ -58,6 +58,10 @@ header nav ul#itemsMenu{
     display:none;
 }
 
+header > nav > ul:target > li > ul#itemsMenu{
+    display: block;
+}
+
 header #logo{
     order:2;
 }
@@ -73,6 +77,9 @@ header .currentTime{
 footer{
     order: 3;
     flex:1 100%;
+    padding-top: 2px;
+    border-top: 1px solid black;
+    font-size: 0.7rem;
 }
 
 
