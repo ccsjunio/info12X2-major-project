@@ -3,7 +3,11 @@ var storeItems = []; //empty array to have the store items
 var cartItems = []; //empty array to have the cart items
 var cart = new Cart(); //create a new Cart for the User
 var store = new Store(); //create a new Store for the app
-var currencySymbol = "CAD$";
+var currencyInformation = {
+    "currencySymbol":"CAD",
+    "currencyName":"Canadian Dollar",
+    "currencyRate":1
+}
 
 //constants
 const URL_ORIGIN = window.location.origin;
@@ -39,6 +43,7 @@ function initialize(){
 
     //populate categories filter
     populateCatalogFilter();
+    populateCurrencyDropBox();
     displayStoreItems();
     initialized = true;
 }
@@ -120,6 +125,33 @@ function populateCatalogFilter(){
         selectionElement.appendChild(category);
         return;
     });//end of categories foreach
+}
+
+function populateCurrencyDropBox(){
+    var currencySelectionElement = document.getElementById("currencySelection");
+    console.log("currencySelectionElement",currencySelectionElement);
+    var currencyOption;
+    currenciesList.forEach((item,index)=>{
+        console.log("populateCurrencyDropBox item iterated = ",item);
+        currencyOption = document.createElement("option");
+        console.log("currencyOption element=",currencyOption);
+        currencyOption.value = index;
+        console.log("option innerHTML being inserted=",item.currencyName);
+        currencyOption.innerHTML = item.currencyName;
+        console.log("option = ",currencyOption);
+        currencySelectionElement.appendChild(currencyOption);
+    });
+}
+
+function changeCurrency(){
+    console.log("currencies into changeCurrency=",currenciesList);
+    var currencySelectionElement = document.getElementById("currencySelection");
+    var currencyOption = currencySelectionElement.value;
+    currencyInformation.currencySymbol = currenciesList[+currencyOption].currencySymbol;
+    currencyInformation.currencyName = currenciesList[+currencyOption].currencyName;
+    currencyInformation.currencyRate = parseFloat(+currenciesList[+currencyOption].currencyRate);
+    console.log("currencyInformation = ",currencyInformation);
+    displayStoreItems();
 }
 
 function sortCatalogItems(){
@@ -207,7 +239,7 @@ function displayStoreItems(){
 
         let priceColumn = document.createElement("div");
         priceColumn.className = "storeItemColumn storeItemPriceColumn";
-        priceColumn.innerHTML = currencySymbol + item.price.toFixed(2);
+        priceColumn.innerHTML = currencyInformation.currencySymbol + "$ " + (item.price * parseFloat(+currencyInformation.currencyRate)).toFixed(2);
         row.appendChild(priceColumn);
 
         let qtyOnHandColumn = document.createElement("div");
