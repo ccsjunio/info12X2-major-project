@@ -34,9 +34,9 @@
                 <article id="filter">
                     <form id="catalogFilter" action="" method="POST">
                         <select id="catalogCategorySelection" onchange="displayStoreItems();">
-                            <option value="all">show all categories</option>
+                            <option value="all">show all</option>
                         </select> <!-- catalogCategorySelection -->
-                        <button type="button" id="buttonClearFilters" onclick="clearAllFilters();">clear all filters</button>
+                        <button type="button" id="buttonClearFilters" onclick="clearAllFilters();">clear filters</button>
                         <select id="catalogSort" onchange="sortCatalogItems();">
                             <option value="">sort items</option>
                             <option value="alphabeticallyAscendant">A->Z</option>
@@ -55,31 +55,24 @@
             </section>
         </main>
         <header>
-            <div id="greeting">
-                <div class="currentTime">CurrentTime</div>
-            </div>
-            <div id="presentation_navigation">
-                <div id="logo">
-                    <img src="./assets/logo/logoGobi.png" alt="logo image"/>
-                </div>
-                <nav>
-                    <ul id="hamburguerMenu">
-                        <!-- source of this font: https://material.io/resources/icons/?icon=menu&style=baseline -->
-                        <li id="hamburguer"><i class="material-icons"><a href="#hamburguerMenu">menu</a></i>
-                            <ul id="itemsMenu">
-                                <li><a href="#">Catalog</a></li>
-                                <li><a href="#">Your cart</a></li>
-                                <li><a href="#">Administration</a>
-                                    <ul>
-                                        <li><a href="#">Manage Items</a></li>
-                                    </ul>
-                                </li>
+            <container>
+                <nav id="menu">
+                    <i class="material-icons">menu</i>
+                    <ul>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="cart">Cart</a></li>
+                        <li>Settings
+                            <ul>
+                                <li>Currency</li>
                             </ul>
                         </li>
-                    </ul>   
+                    </ul>
                 </nav>
-            </div>
-            
+                <div id="logo">
+                    <img src="./assets/logo/logoGobiDark.png" alt="gobi logo"/>
+                </div>
+                <nav id="cart"><i class="material-icons">shopping_cart</i></nav>
+            </container>
         </header>
         
         <footer>

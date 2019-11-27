@@ -21,6 +21,12 @@ console.log("URL_PATHNAME = ", URL_PATHNAME);
 console.log("URL_HOST = ", URL_HOST);
 console.log("URL_HOSTNAME = ", URL_HOSTNAME);
 
+//detect change of page
+window.onbeforeunload = function(event){
+    console.log('event=',event);
+    return "a";
+}
+
 //call function to add initial items to store
 if(!(addInitialItemsToStore().success)) alert ("Problems on load initial storage items!");
 console.log("store=",store);
