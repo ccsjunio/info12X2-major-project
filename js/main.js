@@ -51,6 +51,10 @@ function initialize(){
     populateCatalogFilter();
     populateCurrencyDropBox();
     displayStoreItems();
+
+    //bind events
+    document.getElementById("hamburguer").addEventListener("click",toggleMenu);
+    document.getElementById("closeMenu").addEventListener("click",closeMenu);
     initialized = true;
 }
 
@@ -263,6 +267,26 @@ function displayStoreItems(){
     document.getElementById("catalogList").appendChild(storeItemsContentElement);
 
     return storeItemsContentElement;
+}
+
+toggleMenu = function(){
+    let menu = document.querySelector("container nav ul");
+    let catalogShadow = document.getElementById("catalogShadow");
+    if(menu.style.display=="none") {
+        menu.style.display="block";
+        catalogShadow.style.display="block";
+
+    } else {
+        menu.style.display="none";
+        catalogShadow.style.display="none";
+    }
+}
+
+closeMenu = function(){
+    let menu = document.querySelector("container nav ul");
+    let catalogShadow = document.getElementById("catalogShadow");
+    menu.style.display="none";
+    catalogShadow.style.display="none";
 }
 
 //Sorts contents of an array ascendantly

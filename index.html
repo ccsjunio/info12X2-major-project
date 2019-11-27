@@ -6,7 +6,7 @@
         <meta name="author" content="Carlos Cesar da Silva Ferraz Junior" />
         <meta name="description" content="Major project for E-Commerce" />
         <meta name="keywords" content="e-commerce, info1232, info 1252, crossover, iwdF19, fanshawe college, fanshawe" />
-        <meta name="viewport" content="initial-scale=1, maximum-scale=10.0, user-scalable=1, width=device-width" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=10.0, user-scalable=0, width=device-width" />
 
         <!-- external source for icons -->
         <!-- icons source: https://google.github.io/material-design-icons/ -->
@@ -52,26 +52,33 @@
                 <article id="catalogList">
 
                 </article><!-- end of catalog list -->
+                <article id="catalogShadow">
+
+                </article>
+            </section>
+            <section id="cart">
+
+            </section>
+            <section id="currency">
+
             </section>
         </main>
         <header>
             <container>
                 <nav id="menu">
-                    <i class="material-icons">menu</i>
+                    <i class="material-icons" id="hamburguer">menu</i>
                     <ul>
-                        <li><a href="home">Home</a></li>
-                        <li><a href="cart">Cart</a></li>
-                        <li>Settings
-                            <ul>
-                                <li>Currency</li>
-                            </ul>
-                        </li>
+                        <i class="material-icons" id="closeMenu">close</i>
+                        <li><a href="#home" id="goToHome">Home</a></li>
+                        <li><a href="#cart" id="goToCart">Cart</a></li>
+                        <li><a href="#currency" id="goToCurrency">Currency</a></li>
                     </ul>
                 </nav>
                 <div id="logo">
                     <img src="./assets/logo/logoGobiDark.png" alt="gobi logo"/>
                 </div>
                 <nav id="cart"><i class="material-icons">shopping_cart</i></nav>
+                <div id="cartBadge">1</div>
             </container>
         </header>
         
