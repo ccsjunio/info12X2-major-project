@@ -275,7 +275,7 @@ const displayStoreItems = function(){
         addToCartColumn.innerHTML = "add to cart";
         addToCartColumn.setAttribute("itemId",item.id);
         addToCartColumn.setAttribute("qtyToCart",0);
-        addToCartContainerColumn.appendChild(addToCartColumn);
+        row.appendChild(addToCartColumn);
 
         let addAmountToCartColumn = document.createElement("div");
         addAmountToCartColumn.className = "storeItemColumn storeItemAddAmountToCartColumn";
@@ -410,6 +410,7 @@ const subtractAmountToGoToCart = function(){
 const bindElementsOnCatalog = function (){
     document.querySelectorAll(".storeItemAddAmountToCartColumn").forEach((element)=>element.addEventListener("click",addAmountToGoToCart,false));
     document.querySelectorAll(".storeItemSubtractAmountFromCartColumn").forEach((element)=>element.addEventListener("click",subtractAmountToGoToCart,false));
+
 }
 
 //Sorts contents of an array ascendantly
