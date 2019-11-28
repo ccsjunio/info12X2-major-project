@@ -6,7 +6,8 @@ var store = new Store(); //create a new Store for the app
 var currencyInformation = {
     "currencySymbol":"CAD",
     "currencyName":"Canadian Dollar",
-    "currencyRate":1
+    "currencyRate":1,
+    "currencyTaxRate":0.13
 }
 
 //constants
@@ -157,13 +158,22 @@ const populateCurrencyDropBox = function(){
 
 const changeCurrency = function(){
     console.log("currencies into changeCurrency=",currenciesList);
-    var currencySelectionElement = document.getElementById("currencySelection");
-    var currencyOption = currencySelectionElement.value;
+    let currencySelectionElement = document.getElementById("currencySelection");
+    let currencyOption = currencySelectionElement.value;
     currencyInformation.currencySymbol = currenciesList[+currencyOption].currencySymbol;
     currencyInformation.currencyName = currenciesList[+currencyOption].currencyName;
     currencyInformation.currencyRate = parseFloat(+currenciesList[+currencyOption].currencyRate);
+    currencyInformation.currencyTaxRate = parseFloat(+currenciesList[+currencyOption].currencyTaxRate);
     console.log("currencyInformation = ",currencyInformation);
-    displayStoreItems();
+    //change only the prices information so that the page does not have to be reloaded
+    let currencySymbolElements = document.querySelectorAll(".currencySymbol");
+    let currencyPriceElements = document.querySelectorAll(".currencyPrice");
+    currencySymbolElements.forEach((element)=>{
+        element.textContent = currencyInformation.currencySymbol + "$ ";
+    });
+    currencyPriceElements.forEach((element)=>{
+        element.textContent = (parseFloat(+currencyInformation.currencyRate) * parseFloat(+element.getAttribute("price"))).toFixed(2);
+    });
 }
 
 const sortCatalogItems = function(){
@@ -251,7 +261,27 @@ const displayStoreItems = function(){
 
         let priceColumn = document.createElement("div");
         priceColumn.className = "storeItemColumn storeItemPriceColumn";
-        priceColumn.innerHTML = currencyInformation.currencySymbol + "$ " + (item.price * parseFloat(+currencyInformation.currencyRate)).toFixed(2);
+        priceColumn.setAttribute("itemId",item.id);
+        priceColumn.setAttribute("priceValue",item.price);
+        
+        //attach spam with currency symbol
+        let currencySymbolElement = document.createElement("span");
+        currencySymbolElement.className = "currencySymbol";
+        currencySymbolElement.setAttribute("itemId",item.id);
+        let currencySymbol = document.createTextNode(currencyInformation.currencySymbol + "$ ");
+        currencySymbolElement.appendChild(currencySymbol);
+        
+        //attach spam with price symbol
+        let currencyPriceElement = document.createElement("span");
+        currencyPriceElement.className = "currencyPrice";
+        currencyPriceElement.setAttribute("itemId",item.id);
+        currencyPriceElement.setAttribute("price",item.price);
+        let currencyPrice = document.createTextNode((item.price * parseFloat(+currencyInformation.currencyRate)).toFixed(2));
+        currencyPriceElement.appendChild(currencyPrice);
+
+        priceColumn.appendChild(currencySymbolElement);
+        priceColumn.appendChild(currencyPriceElement);
+
         row.appendChild(priceColumn);
 
         let qtyOnHandColumn = document.createElement("div");
@@ -410,7 +440,7 @@ const subtractAmountToGoToCart = function(){
 const bindElementsOnCatalog = function (){
     document.querySelectorAll(".storeItemAddAmountToCartColumn").forEach((element)=>element.addEventListener("click",addAmountToGoToCart,false));
     document.querySelectorAll(".storeItemSubtractAmountFromCartColumn").forEach((element)=>element.addEventListener("click",subtractAmountToGoToCart,false));
-
+    
 }
 
 //Sorts contents of an array ascendantly
