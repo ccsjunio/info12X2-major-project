@@ -60,3 +60,46 @@
 
 }
 
+.storeItemAddToCartContainerColumn{
+    display:flex;
+    flex-flow: row;
+    order:6;
+    padding: 5px;
+    justify-content: space-between;
+}
+
+.storeItemAddToCartColumn{
+    background-color: #e49400;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    order:1;
+
+}
+
+.storeItemAddAmountToCartColumn{
+    order:3;
+    
+}
+
+.storeItemSubtractAmountFromCartColumn{
+    order:4;
+    
+}
+
+.storeItemAmountToCartColumn{
+    order:2;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bolder;
+}
+
+.overlimit{
+    background-color:#ffe7c5;
+    border:1px solid #ccc;
+    border-radius:10px;
+}

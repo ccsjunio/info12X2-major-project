@@ -43,22 +43,26 @@ var timer = window.setInterval(updateTime,1000*60);
 
 //the storage variable is a global defined by the inclusion of the file before main.js on index.html
 
-function initialize(){
+const initialize = function(){
     //call testing for main functionalities
     generalTest();
 
     //populate categories filter
     populateCatalogFilter();
     populateCurrencyDropBox();
+    //TODO: The displayStore rewrite everything on the list, erasing the binds. remake all catalog binds as a function to execute inside displayStoreItems
     displayStoreItems();
 
     //bind events
     document.getElementById("hamburguer").addEventListener("click",toggleMenu);
     document.getElementById("closeMenu").addEventListener("click",closeMenu);
+
+    //bind additions and subtractions to catalog items
+    bindElementsOnCatalog();
     initialized = true;
 }
 
-function generalTest(){
+const generalTest = function(){
     //test the instantiation of the object Store Item
     try{
         var storeItem = new StoreItem();
@@ -81,7 +85,7 @@ function generalTest(){
      console.log("current time:", currentTime);
 }
 
-function updateTime(){
+function updateTime (){
     //executes only if the page is already initialized
     if(!initialized) return false;
     date = new Date();
@@ -90,7 +94,7 @@ function updateTime(){
     Array.from(currentTimeElements).forEach((element)=>element.innerHTML = "Good morning! Today is " + currentTime);
 }//end of function updateTime
 
-function addInitialItemsToStore(){
+function addInitialItemsToStore (){
     //the initialStorage variable is a global defined by the inclusion of the file before main.js on index.html
     try{
         //use method on class Storage to add a item
@@ -100,17 +104,15 @@ function addInitialItemsToStore(){
         return {success:false,errorMessage:error.message};
     }
     return{success:true,message:"items added with success"};
-
 }
 
-function generateItemCardMarkup(item){
+const generateItemCardMarkup = function(item){
     var card = document.createElement("div");
     card.setAttribute("class","storeItem");
     card.setAttribute("id",item.id);
-    
 }
 
-function populateCatalogFilter(){
+const populateCatalogFilter = function(){
     //assign variable to catalog filter selection
     var selectionElement = document.getElementById("catalogCategorySelection");
     //initialize categories array
@@ -137,7 +139,7 @@ function populateCatalogFilter(){
     });//end of categories foreach
 }
 
-function populateCurrencyDropBox(){
+const populateCurrencyDropBox = function(){
     var currencySelectionElement = document.getElementById("currencySelection");
     console.log("currencySelectionElement",currencySelectionElement);
     var currencyOption;
@@ -153,7 +155,7 @@ function populateCurrencyDropBox(){
     });
 }
 
-function changeCurrency(){
+const changeCurrency = function(){
     console.log("currencies into changeCurrency=",currenciesList);
     var currencySelectionElement = document.getElementById("currencySelection");
     var currencyOption = currencySelectionElement.value;
@@ -164,7 +166,7 @@ function changeCurrency(){
     displayStoreItems();
 }
 
-function sortCatalogItems(){
+const sortCatalogItems = function(){
     //assign variable to sort selection
     var sortSelectionElement = document.getElementById("catalogSort");
     //verify which type of sort was chosen
@@ -192,7 +194,7 @@ function sortCatalogItems(){
     displayStoreItems();
 }
 
-function clearAllFilters(){
+const clearAllFilters = function(){
     //assign variable to category selection
     var catalogCategorySelectionElement = document.getElementById("catalogCategorySelection");
     catalogCategorySelectionElement.selectedIndex = 0;
@@ -203,7 +205,7 @@ function clearAllFilters(){
 }
 
 
-function displayStoreItems(){
+const displayStoreItems = function(){
     //collect category filter element to variable
     var categoryFilter = document.getElementById("catalogCategorySelection");
     var categorySelected = categoryFilter.value;
@@ -254,22 +256,55 @@ function displayStoreItems(){
 
         let qtyOnHandColumn = document.createElement("div");
         qtyOnHandColumn.className = "storeItemColumn storeItemQtyOnHandColumn";
+        qtyOnHandColumn.setAttribute("itemId",item.id);
         qtyOnHandColumn.innerHTML = item.qtyOnHand + " in stock";
         row.appendChild(qtyOnHandColumn);
 
         let maxPerCustomerColumn = document.createElement("div");
         maxPerCustomerColumn.className = "storeItemColumn storeItemMaxPerCustomerColumn";
+        maxPerCustomerColumn.setAttribute("itemId",item.id);
         maxPerCustomerColumn.innerHTML = "max " + item.maxPerCustomer + " items per customer";
         row.appendChild(maxPerCustomerColumn);
 
+        let addToCartContainerColumn = document.createElement("div");
+        addToCartContainerColumn.className = "storeItemColumn storeItemAddToCartContainerColumn";
+        row.appendChild(addToCartContainerColumn);
+
+        let addToCartColumn = document.createElement("div");
+        addToCartColumn.className = "storeItemColumn storeItemAddToCartColumn";
+        addToCartColumn.innerHTML = "add to cart";
+        addToCartColumn.setAttribute("itemId",item.id);
+        addToCartColumn.setAttribute("qtyToCart",0);
+        addToCartContainerColumn.appendChild(addToCartColumn);
+
+        let addAmountToCartColumn = document.createElement("div");
+        addAmountToCartColumn.className = "storeItemColumn storeItemAddAmountToCartColumn";
+        addAmountToCartColumn.setAttribute("itemId",item.id);
+        addAmountToCartColumn.innerHTML = `<li itemId='${item.id}' class='material-icons'>add</i>`;;
+        addToCartContainerColumn.appendChild(addAmountToCartColumn);
+
+        let subtractAmountFromCartColumn = document.createElement("div");
+        subtractAmountFromCartColumn.className = "storeItemColumn storeItemSubtractAmountFromCartColumn";
+        subtractAmountFromCartColumn.setAttribute("itemId",item.id);
+        subtractAmountFromCartColumn.innerHTML = `<li itemId='${item.id}' class='material-icons'>remove</i>`;
+        addToCartContainerColumn.appendChild(subtractAmountFromCartColumn);
+
+        let amountToCartColumn = document.createElement("div");
+        amountToCartColumn.className = "storeItemColumn storeItemAmountToCartColumn";
+        amountToCartColumn.setAttribute("itemId",item.id);
+        amountToCartColumn.innerHTML = "qtd:<span class='qtyNumber'>0</span>";
+        addToCartContainerColumn.appendChild(amountToCartColumn);
+        
         storeItemsContentElement.appendChild(row);
     });//end of iteration through store item
     document.getElementById("catalogList").appendChild(storeItemsContentElement);
 
+    bindElementsOnCatalog();
+
     return storeItemsContentElement;
 }
 
-toggleMenu = function(){
+const toggleMenu = function(){
     let menu = document.querySelector("container nav ul");
     let catalogShadow = document.getElementById("catalogShadow");
     if(menu.style.display=="none") {
@@ -282,11 +317,99 @@ toggleMenu = function(){
     }
 }
 
-closeMenu = function(){
+const closeMenu = function(){
     let menu = document.querySelector("container nav ul");
     let catalogShadow = document.getElementById("catalogShadow");
     menu.style.display="none";
     catalogShadow.style.display="none";
+}
+
+//actions to cart
+const addAmountToGoToCart = function(){
+    //"this" is the element clicked
+    //retrieve the itemId from the product from this element
+    let itemId = this.getAttribute("itemId");
+    console.log("itemId=",itemId);
+    console.log("store items find per Id = ", store.items.findPerId(itemId));
+    let maxQtyPerCustomer = store.items.findPerId(itemId).maxPerCustomer;
+    let qtyOnHand = store.items.findPerId(itemId).qtyOnHand;
+    //get element of the quantity number
+    let qtyElement = document.querySelector(`.storeItemAmountToCartColumn[itemId='${itemId}'] .qtyNumber`);
+    let qty = parseInt(+qtyElement.innerHTML.replace(/\s+/gi,""));
+    console.log(`qty for item ${itemId}=`,qty);
+    ( qty < maxQtyPerCustomer && qty < qtyOnHand ) ? qty++ : qty;
+
+    //update quantity at the page, in the respective element
+    qtyElement.innerHTML = qty;
+
+    //update attribute qty on button 'addToCart'
+    document.querySelector(`.storeItemAddToCartColumn[itemId='${itemId}']`).setAttribute('qtyToCart',qty);
+
+    if( qty == maxQtyPerCustomer ){
+        let maxPerCustomerElement = document.querySelector(`.storeItemMaxPerCustomerColumn[itemId='${itemId}']`);
+        let classNames = maxPerCustomerElement.className.split(" ");
+        if(classNames.indexOf("overlimit")==-1){
+            classNames.push("overlimit");
+            maxPerCustomerElement.className = classNames.join(" ");
+        }    
+    }
+
+    if( qty == qtyOnHand ){
+        let qtyOnHandElement = document.querySelector(`.storeItemQtyOnHandColumn[itemId='${itemId}']`);
+        let classNames = qtyOnHandElement.className.split(" ");
+        if(classNames.indexOf("overlimit")==-1){
+            classNames.push("overlimit");
+            qtyOnHandElement.className = classNames.join(" ");
+        }    
+    }
+
+}
+const subtractAmountToGoToCart = function(){
+    //"this" is the element clicked
+    //retrieve the itemId from the product from this element
+    let itemId = this.getAttribute("itemId");
+    console.log("itemId=",itemId);
+    let maxQtyPerCustomer = store.items.findPerId(itemId).maxPerCustomer;
+    let qtyOnHand = store.items.findPerId(itemId).qtyOnHand;
+    //get element of the quantity number
+    let qtyElement = document.querySelector(`.storeItemAmountToCartColumn[itemId='${itemId}'] .qtyNumber`);
+    let qty = parseInt(+qtyElement.innerHTML.replace(/\s+/gi,""));
+    console.log(`subtract qty for item ${itemId}=`,qty);
+    (qty == 0) ? qty : qty--;
+
+    //update quantity at the page, in the respective element
+    qtyElement.innerHTML = qty;
+
+    //update attribute qty on button 'addToCart'
+    document.querySelector(`.storeItemAddToCartColumn[itemId='${itemId}']`).setAttribute('qtyToCart',qty);
+
+    if( qty == maxQtyPerCustomer - 1 ){
+        let maxPerCustomerElement = document.querySelector(`.storeItemMaxPerCustomerColumn[itemId='${itemId}']`);
+        let classNames = maxPerCustomerElement.className.split(" ");
+        console.log("classNames=",classNames)
+        let index = classNames.indexOf("overlimit");
+        if(index!==-1){
+            classNames.splice(index,1);
+            maxPerCustomerElement.className = classNames.join(" ");
+        }
+        
+    }
+
+    if( qty == qtyOnHand - 1 ){
+        let qtyOnHandElement = document.querySelector(`.storeItemQtyOnHandColumn[itemId='${itemId}']`);
+        let classNames = qtyOnHandElement.className.split(" ");
+        let index = classNames.indexOf("overlimit");
+        if(index!==-1){
+            classNames.splice(index,1);
+            qtyOnHandElement.className = classNames.join(" ");
+        }
+    }
+
+}
+
+const bindElementsOnCatalog = function (){
+    document.querySelectorAll(".storeItemAddAmountToCartColumn").forEach((element)=>element.addEventListener("click",addAmountToGoToCart,false));
+    document.querySelectorAll(".storeItemSubtractAmountFromCartColumn").forEach((element)=>element.addEventListener("click",subtractAmountToGoToCart,false));
 }
 
 //Sorts contents of an array ascendantly
@@ -382,4 +505,8 @@ Array.prototype.sortIdDescendant = function (){
         return 0;
     })
     return this;
+}
+
+Array.prototype.findPerId = function(itemId){
+    return this.find((element)=>element.id==itemId);
 }

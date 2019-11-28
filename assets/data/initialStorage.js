@@ -73,8 +73,8 @@ const initialStorage = [
         id : "GOBI_00003",
         name : "Calvin Klein - OBSESSION for Men Eau de Toilette",
         price : 95.00,
-        qtyOnHand : 15,
-        maxPerCustomer : 2, 
+        qtyOnHand : 3,
+        maxPerCustomer : 5, 
         category : "Luxury Beauty", 
         costOfShipping : 19.99, 
         reviews : [
