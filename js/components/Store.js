@@ -39,4 +39,8 @@ const Store = class {
 
 
     }
+
+    subtractQuantityOnHand(itemId,qty){
+        this.items.find((element)=>element.id==itemId).qtyOnHand -= qty;
+    }
 }

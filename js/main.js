@@ -3,6 +3,7 @@ var storeItems = []; //empty array to have the store items
 var cartItems = []; //empty array to have the cart items
 var cart = new Cart(); //create a new Cart for the User
 var store = new Store(); //create a new Store for the app
+var catalogDisplay = new CatalogDisplay("catalogList")
 var currencyInformation = {
     "currencySymbol":"CAD",
     "currencyName":"Canadian Dollar",
@@ -305,6 +306,9 @@ const displayStoreItems = function(){
         addToCartColumn.innerHTML = "add to cart";
         addToCartColumn.setAttribute("itemId",item.id);
         addToCartColumn.setAttribute("qtyToCart",0);
+        if(item.qtyOnHand===0||addToCartColumn.getAttribute("qtyToCart")===0){
+            addToCartColumn.setAttribute("disabled",true);
+        }
         row.appendChild(addToCartColumn);
 
         let addAmountToCartColumn = document.createElement("div");
@@ -437,10 +441,37 @@ const subtractAmountToGoToCart = function(){
 
 }
 
+const addItemToCart = function(){
+    console.log("addItemToCart");
+    console.log("this=",this);
+    let itemId = this.getAttribute("itemId");
+    let storageItem = store.items.findPerId(itemId);
+    let qty = parseInt(this.getAttribute("qtytocart"));
+    let resultFromCart = cart.addItem(storageItem,qty);
+    console.log("resultFromCart=",resultFromCart);
+    if(resultFromCart.success){
+        //update cart badge
+        console.log("result from cart=",resultFromCart);
+        console.log("cart after adding:",cart);
+        let cartBadge = document.getElementById("cartBadge");
+        cartBadge.textContent = resultFromCart.quantityOfItems;
+        cartBadge.setAttribute("style","display:block;");
+        //update items available in storage
+        store.subtractQuantityOnHand(itemId,qty);
+        console.log("store=",store);
+        //update markup of element in items available
+        catalogDisplay.updateStorageInformation(itemId,storageItem.qtyOnHand);
+        document.querySelector(`.storeItemAddToCartColumn[itemId='${itemId}']`).setAttribute('qtyToCart',0);
+        document.querySelector(`.storeItemAmountToCartColumn[itemId='${itemId}'] .qtyNumber`).textContent = 0;
+    }
+    
+}
+
 const bindElementsOnCatalog = function (){
     document.querySelectorAll(".storeItemAddAmountToCartColumn").forEach((element)=>element.addEventListener("click",addAmountToGoToCart,false));
     document.querySelectorAll(".storeItemSubtractAmountFromCartColumn").forEach((element)=>element.addEventListener("click",subtractAmountToGoToCart,false));
-    
+    //bind add to cart button
+    document.querySelectorAll(".storeItemAddToCartColumn").forEach((element)=>element.addEventListener("click",addItemToCart));
 }
 
 //Sorts contents of an array ascendantly
