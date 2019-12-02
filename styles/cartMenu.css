@@ -140,3 +140,16 @@ nav#cartMenu{
     padding:5px;
 }
 
+header container #cartBadge{
+    position: absolute;
+    right: 15px;
+    font-weight: bolder;
+    top: 1px;
+    font-size: 0.9rem;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+    padding: 2px;
+    display: none;
+}
+

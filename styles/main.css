@@ -38,49 +38,9 @@ header{
      cursor:pointer;
  }
 
- header container nav ul{
-    padding-inline-start: 0px;
-    list-style: none;
-    background-color: white;
-    color: rgb(58, 57, 57);
-    margin-block-start: 0px;
-    font-size: 1.1rem;
-    margin-top: 2px;
-    position: absolute;
-    padding:20px;
-    display: none;
-    width:85%;
- }
+ 
 
- header container nav #closeMenu{
-    position: absolute;
-    right: 7px;
-    color: red;
-    font-weight: bolder;
-    font-size: 1.2rem;
- }
 
- header container nav ul li a{
-     text-decoration: none;
- }
-
- header container nav ul li a:hover{color:rgb(58,57,57);}
- header container nav ul li a:link{color:rgb(58,57,57);}
- header container nav ul li a:visited{color:rgb(58,57,57);}
- header container nav ul li a:active{color:rgb(58,57,57);}
-
-header container #cartBadge{
-    position: absolute;
-    right: 15px;
-    font-weight: bolder;
-    top: 1px;
-    font-size: 0.9rem;
-    background-color: orange;
-    border-radius: 5px;
-    color: white;
-    padding: 2px;
-    display: none;
-}
 
 footer{
     order: 3;

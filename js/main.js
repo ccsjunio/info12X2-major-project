@@ -4,6 +4,7 @@ let cartItems = []; //empty array to have the cart items
 let cart = new Cart(); //create a new Cart for the User
 let store = new Store(); //create a new Store for the app
 let greyArea = new GreyArea(); //create a new grey area block
+let menu = new Menu();
 let catalogDisplay = new CatalogDisplay("catalogList")
 let currencyInformation = {
     "currencySymbol":"CAD",
@@ -55,10 +56,6 @@ const initialize = () => {
     populateCurrencyDropBox();
     //TODO: The displayStore rewrite everything on the list, erasing the binds. remake all catalog binds as a function to execute inside displayStoreItems
     displayStoreItems();
-
-    //bind events
-    
-
     //bind additions and subtractions to catalog items
     bindElementsOnCatalog();
     initialized = true;
@@ -340,23 +337,14 @@ const displayStoreItems = function(){
     return storeItemsContentElement;
 }
 
-const toggleMenu = function(){
-    const menu = document.querySelector("container nav ul");
-    const catalogShadow = document.getElementById("catalogShadow");
-    if(menu.style.display=="none") {
-        menu.style.display="block";
-        catalogShadow.style.display="block";
-    } else {
-        menu.style.display="none";
-        catalogShadow.style.display="none";
-    }
-}
-
-const closeMenu = function(){
-    const menu = document.querySelector("container nav ul");
-    const catalogShadow = document.getElementById("catalogShadow");
-    menu.style.display="none";
-    catalogShadow.style.display="none";
+const toggleMenuVisibility = function(){
+    console.log("hello! ToggleMenuVisibility is listening!");
+    toggleGreyAreaVisibility() ;
+    menu.isVisible = !menu.isVisible;
+    console.log("state of menu after toggling:", menu);
+    menu.isVisible ? 
+        document.querySelector("container nav#mainMenu").setAttribute("style","display:block;") : 
+        document.querySelector("container nav#mainMenu").setAttribute("style","display:none;");
 }
 
 //actions to cart
@@ -614,17 +602,14 @@ const bindElementsOnCatalog = ()=>{
     document.querySelectorAll(".storeItemAddAmountToCartColumn").forEach((element)=>element.addEventListener("click",addAmountToGoToCart,false));
     document.querySelectorAll(".storeItemSubtractAmountFromCartColumn").forEach((element)=>element.addEventListener("click",subtractAmountToGoToCart,false));
     //bind events to menu 
-    document.getElementById("hamburguer").addEventListener("click",toggleMenu,true);
-    document.getElementById("closeMenu").addEventListener("click",closeMenu,true);
-    //bind events to cart menu
-    console.log("getElementById selector cartMenu=",document.getElementById("cartMenu"));
+    document.querySelector("nav#menuIcon").addEventListener("click",toggleMenuVisibility,false);
+    document.querySelector("nav#mainMenu #closeMenu").addEventListener("click",toggleMenuVisibility,false);
     //bind click to cart icon
     document.querySelector("nav#cart").addEventListener("click",toggleCartMenuVisibility,false);
-    //bind add to cart button
-    document.querySelectorAll(".storeItemAddToCartColumn").forEach((element)=>element.addEventListener("click",addItemToCart));
     //bind close cart menu button
     document.querySelector("#cartMenuActionButtons #closeCartMenu").addEventListener("click",toggleCartMenuVisibility,false);
-    
+    //bind add to cart button
+    document.querySelectorAll(".storeItemAddToCartColumn").forEach((element)=>element.addEventListener("click",addItemToCart));
 }
 
 //Sorts contents of an array ascendantly

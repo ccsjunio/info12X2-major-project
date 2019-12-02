@@ -19,6 +19,7 @@
         <link href="./styles/main.css" type="text/css" rel="stylesheet" />
         <link href="./styles/storeItemsContainer.css" type="text/css" rel="stylesheet" />
         <link href="./styles/cartMenu.css" type="text/css" rel="stylesheet"/>
+        <link href="./styles/mainMenu.css" type="text/css" rel="stylesheet"/>
 
         <!-- link to javascript files -->
         <script src="./js/components/Cart.js" type="text/javascript"></script>
@@ -27,6 +28,7 @@
         <script src="./js/components/StoreItem.js" type="text/javascript"></script>
         <script src="./js/components/CartItem.js" type="text/javascript"></script>
         <script src="./js/components/GreyArea.js" type="text/javascript"></script>
+        <script src="./js/components/Menu.js" type="text/javascript"></script>
         <script src="./assets/data/initialStorage.js" type="text/javascript"></Script>
         <script src="./assets/data/currencies.js" type="text/javascript"></Script>
         <script src="./js/main.js" type="text/javascript"></script>
@@ -68,10 +70,10 @@
         </main>
         <header>
             <container>
-                <nav id="menu">
-                    <i class="material-icons" id="hamburguer">menu</i>
+                <nav id="menuIcon"><i class="material-icons" id="hamburguer">menu</i></nav>
+                <nav id="mainMenu">
                     <ul>
-                        <i class="material-icons" id="closeMenu">close</i>
+                        <div id="closeMenu"><i class="material-icons">close</i></div>
                         <li><a href="#home" id="goToHome">Home</a></li>
                         <li><a href="#cart" id="goToCart">Cart</a></li>
                         <li><a href="#currency" id="goToCurrency">Currency</a></li>
