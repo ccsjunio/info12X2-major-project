@@ -1,10 +1,11 @@
 //create global variables
-var storeItems = []; //empty array to have the store items
-var cartItems = []; //empty array to have the cart items
-var cart = new Cart(); //create a new Cart for the User
-var store = new Store(); //create a new Store for the app
-var catalogDisplay = new CatalogDisplay("catalogList")
-var currencyInformation = {
+let storeItems = []; //empty array to have the store items
+let cartItems = []; //empty array to have the cart items
+let cart = new Cart(); //create a new Cart for the User
+let store = new Store(); //create a new Store for the app
+let greyArea = new GreyArea(); //create a new grey area block
+let catalogDisplay = new CatalogDisplay("catalogList")
+let currencyInformation = {
     "currencySymbol":"CAD",
     "currencyName":"Canadian Dollar",
     "currencyRate":1,
@@ -34,18 +35,18 @@ if(!(addInitialItemsToStore().success)) alert ("Problems on load initial storage
 console.log("store=",store);
 
 //state variables
-var initialized = false;
+let initialized = false;
 
 //initialize the current time and a timeout to update it each second
-var date = new Date();
-var options = {weekday:'short',year:'numeric',month:'short', day:'numeric', hour: 'numeric', minute: 'numeric'};
-var currentTime = new Intl.DateTimeFormat('en-US',options).format(date); //variable that will store the current date and time;
-var currentTimeElements;
-var timer = window.setInterval(updateTime,1000*60);
+let date = new Date();
+let options = {weekday:'short',year:'numeric',month:'short', day:'numeric', hour: 'numeric', minute: 'numeric'};
+let currentTime = new Intl.DateTimeFormat('en-US',options).format(date); //variable that will store the current date and time;
+let currentTimeElements;
+let timer = window.setInterval(updateTime,1000*60);
 
 //the storage variable is a global defined by the inclusion of the file before main.js on index.html
 
-const initialize = function(){
+const initialize = () => {
     //call testing for main functionalities
     generalTest();
 
@@ -56,8 +57,7 @@ const initialize = function(){
     displayStoreItems();
 
     //bind events
-    document.getElementById("hamburguer").addEventListener("click",toggleMenu);
-    document.getElementById("closeMenu").addEventListener("click",closeMenu);
+    
 
     //bind additions and subtractions to catalog items
     bindElementsOnCatalog();
@@ -175,6 +175,8 @@ const changeCurrency = function(){
     currencyPriceElements.forEach((element)=>{
         element.textContent = (parseFloat(+currencyInformation.currencyRate) * parseFloat(+element.getAttribute("price"))).toFixed(2);
     });
+    //update cart menu
+    updateCartMenu();
 }
 
 const sortCatalogItems = function(){
@@ -339,12 +341,11 @@ const displayStoreItems = function(){
 }
 
 const toggleMenu = function(){
-    let menu = document.querySelector("container nav ul");
-    let catalogShadow = document.getElementById("catalogShadow");
+    const menu = document.querySelector("container nav ul");
+    const catalogShadow = document.getElementById("catalogShadow");
     if(menu.style.display=="none") {
         menu.style.display="block";
         catalogShadow.style.display="block";
-
     } else {
         menu.style.display="none";
         catalogShadow.style.display="none";
@@ -352,8 +353,8 @@ const toggleMenu = function(){
 }
 
 const closeMenu = function(){
-    let menu = document.querySelector("container nav ul");
-    let catalogShadow = document.getElementById("catalogShadow");
+    const menu = document.querySelector("container nav ul");
+    const catalogShadow = document.getElementById("catalogShadow");
     menu.style.display="none";
     catalogShadow.style.display="none";
 }
@@ -437,41 +438,193 @@ const subtractAmountToGoToCart = function(){
             classNames.splice(index,1);
             qtyOnHandElement.className = classNames.join(" ");
         }
-    }
-
+    }//if( qty == qtyOnHand - 1 )
 }
 
 const addItemToCart = function(){
-    console.log("addItemToCart");
-    console.log("this=",this);
+    //console.log("addItemToCart");
+    //console.log("this=",this);
     let itemId = this.getAttribute("itemId");
     let storageItem = store.items.findPerId(itemId);
     let qty = parseInt(this.getAttribute("qtytocart"));
-    let resultFromCart = cart.addItem(storageItem,qty);
-    console.log("resultFromCart=",resultFromCart);
+    //console.log(`asked to add item with item ID ${itemId} and qty ${qty} - element:`,storageItem);
+    //following requirements
+    let cartItem = new CartItem();
+    cartItem.id = itemId;
+    cartItem.price = storageItem.price;
+    cartItem.qty = qty;
+    cartItem.shipping = storageItem.costOfShipping;
+    console.log(`item to add to cart:`,cartItem);
+    let resultFromCart = cart.addItem(cartItem);
+    //console.log("resultFromCart=",resultFromCart);
     if(resultFromCart.success){
         //update cart badge
-        console.log("result from cart=",resultFromCart);
-        console.log("cart after adding:",cart);
+        //console.log("result from cart=",resultFromCart);
+        //console.log("cart after adding:",cart);
         let cartBadge = document.getElementById("cartBadge");
-        cartBadge.textContent = resultFromCart.quantityOfItems;
+        cartBadge.textContent = resultFromCart.quantityOfDistinctItems;
         cartBadge.setAttribute("style","display:block;");
         //update items available in storage
         store.subtractQuantityOnHand(itemId,qty);
-        console.log("store=",store);
+        //console.log("store=",store);
         //update markup of element in items available
         catalogDisplay.updateStorageInformation(itemId,storageItem.qtyOnHand);
+        updateCartMenu();
         document.querySelector(`.storeItemAddToCartColumn[itemId='${itemId}']`).setAttribute('qtyToCart',0);
         document.querySelector(`.storeItemAmountToCartColumn[itemId='${itemId}'] .qtyNumber`).textContent = 0;
+    }//if(resultFromCart.success)
+}
+
+const toggleCartMenuVisibility = function(){
+    console.log("hello! toggleCartMenuVisibility is listening!");
+    toggleGreyAreaVisibility() ;
+    cart.isVisible = !cart.isVisible;
+    cart.isVisible ? 
+        document.querySelector("container nav#cartMenu").setAttribute("style","display:block;") : 
+        document.querySelector("container nav#cartMenu").setAttribute("style","display:none;");
+        
+}
+
+const toggleGreyAreaVisibility = function(){
+    console.log("hello! toggleGreyAreaVisibility is listening!");
+    greyArea.isVisible = !greyArea.isVisible;
+    greyArea.isVisible ? 
+        document.querySelector("#greyArea").setAttribute("style","display:block;min-height:"+document.body.clientHeight+"px") :
+        document.querySelector("#greyArea").setAttribute("style","display:none;");
+}
+
+const updateCartMenu = function(){
+    //assign cart menu items area to constant
+    const cartMenuItemsArea = document.querySelector("#cartMenuContainer #cartMenuItems");
+    const totalAmountBeforeTaxes = parseFloat(cart.totalAmountBeforeTaxes).toFixed(2);
+    if(cart.items.length===0){
+
+        document.querySelector("#cartMenuContainer #messageEmpty").setAttribute("style","display:block;");
+        document.querySelector("#cartMenuContainer #openCart").setAttribute("style","display:none;");
+        document.querySelector("#cartMenuContainer #emptyCart").setAttribute("style","display:none;");
+        document.querySelector("#cartMenuContainer #cartMenuItems").setAttribute("style","display:none;");
+
+    } else {
+
+        //clean menu area
+        cartMenuItemsArea.innerHTML = "";
+        cart.items.forEach((element)=>{
+
+            console.log("in updateCartMenu, item being processed: ", element);
+            
+            let container = document.createElement("div");
+            container.className = "cartMenuItem";
+            
+            let qtyColumn = document.createElement("div");
+            qtyColumn.className = "qtyColumn";
+            qtyColumn.textContent = element.qty;
+            container.appendChild(qtyColumn);
+
+            let nameColumn = document.createElement("div");
+            let elementName = store.items.findPerId(element.id).name;
+            nameColumn.className = "nameColumn";
+            nameColumn.textContent = elementName.substr(0,30) + (elementName.length>30?"...":"");
+            container.appendChild(nameColumn);
+
+            let priceColumn = document.createElement("div");
+            priceColumn.className = "priceColumn";
+            priceColumn.textContent = currencyInformation.currencySymbol + "$" + (parseFloat(element.price) * parseFloat(currencyInformation.currencyRate) * parseInt(element.qty)).toFixed(2);
+            container.appendChild(priceColumn);
+
+            cartMenuItemsArea.appendChild(container);
+
+        });
+
+        //print total amount before taxes
+        let totalAmountBeforeTaxesContainer = document.createElement("div");
+        totalAmountBeforeTaxesContainer.className = "cartMenuItem totalAmountBeforeTaxes";
+
+        let totalAmountBeforeTaxesName = document.createElement("div");
+        totalAmountBeforeTaxesName.className = "nameColum";
+        totalAmountBeforeTaxesName.textContent = "total amount before taxes";
+        totalAmountBeforeTaxesContainer.appendChild(totalAmountBeforeTaxesName);
+
+        let totalAmountBeforeTaxesPrice = document.createElement("div");
+        totalAmountBeforeTaxesPrice.className = "priceColumn";
+        totalAmountBeforeTaxesPrice.textContent = currencyInformation.currencySymbol + "$" + (parseFloat(+cart.totalAmountBeforeTaxes) * parseFloat(currencyInformation.currencyRate)).toFixed(2);
+        totalAmountBeforeTaxesContainer.appendChild(totalAmountBeforeTaxesPrice);
+
+        cartMenuItemsArea.appendChild(totalAmountBeforeTaxesContainer);
+
+        //print total amount of shipping
+        let totalAmountOfShippingContainer = document.createElement("div");
+        totalAmountOfShippingContainer.className = "cartMenuItem totalShipping";
+
+        let totalAmountOfShippingName = document.createElement("div");
+        totalAmountOfShippingName.className = "nameColum";
+        totalAmountOfShippingName.textContent = "total shipping";
+        totalAmountOfShippingContainer.appendChild(totalAmountOfShippingName);
+
+        let totalAmountOfShippingPrice = document.createElement("div");
+        totalAmountOfShippingPrice.className = "priceColumn";
+        totalAmountOfShippingPrice.textContent = currencyInformation.currencySymbol + "$" + (parseFloat(+cart.totalShipping) * parseFloat(currencyInformation.currencyRate)).toFixed(2);
+        totalAmountOfShippingContainer.appendChild(totalAmountOfShippingPrice);
+
+        cartMenuItemsArea.appendChild(totalAmountOfShippingContainer);
+
+        //print total amount of taxes
+        let totalAmountOfTaxesContainer = document.createElement("div");
+        totalAmountOfTaxesContainer.className = "cartMenuItem totalTaxes";
+
+        let totalAmountOfTaxesName = document.createElement("div");
+        totalAmountOfTaxesName.className = "nameColum";
+        totalAmountOfTaxesName.textContent = "total taxes (incl shipping)";
+        totalAmountOfTaxesContainer.appendChild(totalAmountOfTaxesName);
+
+        let totalAmountOfTaxesPrice = document.createElement("div");
+        totalAmountOfTaxesPrice.className = "priceColumn";
+        totalAmountOfTaxesPrice.textContent = currencyInformation.currencySymbol + "$" + (parseFloat(+cart.totalTaxes)* parseFloat(currencyInformation.currencyRate)).toFixed(2);
+        totalAmountOfTaxesContainer.appendChild(totalAmountOfTaxesPrice);
+
+        cartMenuItemsArea.appendChild(totalAmountOfTaxesContainer);
+
+        //print total amount of cart
+        let totalAmountOfCartContainer = document.createElement("div");
+        totalAmountOfCartContainer.className = "cartMenuItem totalCart";
+
+        let totalAmountOfCartName = document.createElement("div");
+        totalAmountOfCartName.className = "nameColum";
+        totalAmountOfCartName.textContent = "total due";
+        totalAmountOfCartContainer.appendChild(totalAmountOfCartName);
+
+        let totalAmountOfCartPrice = document.createElement("div");
+        totalAmountOfCartPrice.className = "priceColumn";
+        totalAmountOfCartPrice.textContent = currencyInformation.currencySymbol + "$" + (parseFloat(+cart.totalDue)* parseFloat(currencyInformation.currencyRate)).toFixed(2);
+        totalAmountOfCartContainer.appendChild(totalAmountOfCartPrice);
+
+        cartMenuItemsArea.appendChild(totalAmountOfCartContainer);
+        
+        document.querySelector("#cartMenuContainer #messageEmpty").setAttribute("style","display:none;");
+        document.querySelector("#cartMenuContainer #openCart").setAttribute("style","display:block;");
+        document.querySelector("#cartMenuContainer #emptyCart").setAttribute("style","display:block;");
+        document.querySelector("#cartMenuContainer #cartMenuItems").setAttribute("style","display:flex;");
+
     }
     
 }
-
-const bindElementsOnCatalog = function (){
+/*
+    bind element events at catalog page
+*/
+const bindElementsOnCatalog = ()=>{
     document.querySelectorAll(".storeItemAddAmountToCartColumn").forEach((element)=>element.addEventListener("click",addAmountToGoToCart,false));
     document.querySelectorAll(".storeItemSubtractAmountFromCartColumn").forEach((element)=>element.addEventListener("click",subtractAmountToGoToCart,false));
+    //bind events to menu 
+    document.getElementById("hamburguer").addEventListener("click",toggleMenu,true);
+    document.getElementById("closeMenu").addEventListener("click",closeMenu,true);
+    //bind events to cart menu
+    console.log("getElementById selector cartMenu=",document.getElementById("cartMenu"));
+    //bind click to cart icon
+    document.querySelector("nav#cart").addEventListener("click",toggleCartMenuVisibility,false);
     //bind add to cart button
     document.querySelectorAll(".storeItemAddToCartColumn").forEach((element)=>element.addEventListener("click",addItemToCart));
+    //bind close cart menu button
+    document.querySelector("#cartMenuActionButtons #closeCartMenu").addEventListener("click",toggleCartMenuVisibility,false);
+    
 }
 
 //Sorts contents of an array ascendantly

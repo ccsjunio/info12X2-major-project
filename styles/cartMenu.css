@@ -1,37 +1,142 @@
 nav#cartMenu{
-    position:absolute;
-    width:50px;
-    background-color: white;
-    font-weight: 0.9rem;
+    position: absolute;
+    width: 80%;
+    background-color: #fffbe8;
+    font-size: 0.9rem;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 11px;
+    color: black;
+    right: 10px;
+    top: 41px;
+    border-radius: 5px;
+    text-align: right;
+    display: none;
+    z-index: 10;
 }
 
 #cartMenuContainer{
-    display:flex;
-    flex-flow:column;
+    display: flex;
+    flex-flow: column;
 }
 
 #messageEmpty{
-    order:1;
-    flex:1;
-    display:none;
+    order: 1;
+    flex: 1;
 }
 
 #openCart{
-    order:2;
-    flex:1;
+    order: 2;
+    flex: 1;
+    display: none;
 }
 
 #emptyCart{
-    order:3;
-    flex:1;
+    order: 3;
+    flex: 1;
+    display: none;
 }
 
 #cartMenuItems{
     display: flex;
     flex-flow: column;
+    justify-content: space-between;
+    align-items: stretch;
+    order: 4;
 }
 
 #cartMenuItems .cartMenuItem{
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    display: flex;
+    flex-flow: row;
+    font-size: 0.8rem;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between;
+}
+
+.cartMenuItem .qtyColumn{
+    padding: 3px 3px 3px 0;
+    color: #9e6600;
+    font-weight: bolder;
+}
+
+.cartMenuItem .nameColumn{
+    padding: 3px 3px 3px 0;
+    font-weight: bolder;
+    color: #555;
+}
+
+.cartMenuItem .priceColumn{
+    padding: 3px 3px 3px 0;
+    color: #9e6600;
+    font-weight: bolder;
+}
+
+#cartMenuItems .totalAmountBeforeTaxes{
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+#cartMenuItems .totalShipping{
+
+}
+
+#cartMenuItems .totalTaxes{
+
+}
+
+#cartMenuItems .totalCart{
+    font-weight: bolder;
+    font-size: 1.1rem;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+#cartMenuActionButtons{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    font-size: 0.8rem;
+}
+
+#cartMenuActionButtons #openCart{
+    order:1;
     flex:1;
 }
+
+#cartMenuActionButtons #emptyCart{
+    order:2;
+    flex:1;
+}
+
+#cartMenuActionButtons #closeCartMenu{
+    order:3;
+    font-weight: bolder;
+    cursor:pointer;
+    color: red;
+    flex:2;
+    position: absolute;
+    right:5px;
+    top: 5px;
+    padding:5px;
+    border-radius: 3px;
+}
+
+#cartMenuActionButtons #closeCartMenu:active{
+    color:white;
+    background-color: red;
+}
+
+
+#cartMenuActionButtons #closeCartMenu #onlyButton:active{
+    color:white;
+    background-color:red;
+    border-radius: 3px;
+    padding:5px;
+}
+
