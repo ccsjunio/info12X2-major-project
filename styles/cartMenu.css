@@ -95,7 +95,7 @@ nav#cartMenu{
 }
 
 #cartMenuActionButtons{
-    display: flex;
+    display: none;
     flex-flow: row;
     justify-content: space-between;
     text-align: left;

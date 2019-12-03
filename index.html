@@ -35,7 +35,7 @@
     </head>
     <body onload="initialize();">
         <main>
-            <section id="catalog">
+            <section id="catalogSection">
                 <article id="filter">
                     <form id="catalogFilter" action="" method="POST">
                         <select id="catalogCategorySelection" onchange="displayStoreItems();">
@@ -61,34 +61,36 @@
 
                 </article>
             </section>
-            <section id="cart">
-
+            <section id="cartSection">
             </section>
-            <section id="currency">
-
+            <section id="currencySection">
+            </section>
+            <section id="checkoutSection">
             </section>
         </main>
         <header>
             <container>
                 <nav id="menuIcon"><i class="material-icons" id="hamburguer">menu</i></nav>
-                <nav id="mainMenu">
+                <nav id="mainMenu" class="menu">
                     <ul>
                         <div id="closeMenu"><i class="material-icons">close</i></div>
-                        <li><a href="#home" id="goToHome">Home</a></li>
-                        <li><a href="#cart" id="goToCart">Cart</a></li>
-                        <li><a href="#currency" id="goToCurrency">Currency</a></li>
+                        <li><a href="#home" class="goToHome">Home</a></li>
+                        <li><a href="#cart" class="goToCart">Cart</a></li>
+                        <li><a href="#currency" class="goToCurrency">Currency</a></li>
+                        <li><a href="#checkout" class="goToCheckout">Checkout</a></li>
                     </ul>
+                    <div class="greyArea"></div>
                 </nav>
                 <div id="logo">
                     <img src="./assets/logo/logoGobiDark.png" alt="gobi logo"/>
                 </div>
                 <nav id="cart"><i class="material-icons">shopping_cart</i></nav>
                 <div id="cartBadge">1</div>
-                <nav id="cartMenu">
+                <nav id="cartMenu" class="menu">
                     <div id="cartMenuContainer">
                         <div id="messageEmpty">Your cart is empty</div>
                         <div id="cartMenuActionButtons">
-                            <div id="openCart" class="cartMenuItem">open cart</div>
+                            <div id="openCart" class="cartMenuItem goToCart">open cart</div>
                             <div id="emptyCart" class="cartMenuItem">emptyCart</div>
                             <div id="closeCartMenu" class="cartMenuItem">X</div>
                         </div>
@@ -107,6 +109,5 @@
         </footer>
 
         <div id="greyArea"></div>
-
     </body>
 </html>

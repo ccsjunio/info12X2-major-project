@@ -13,6 +13,19 @@ let currencyInformation = {
     "currencyTaxRate":0.13
 }
 
+//section elements on the page - initialization of global variables
+//assign section catalog to variable
+let catalogSectionElement;
+//assign section cart to variable
+let cartSectionElement;
+//assign section currency to variable
+let currencySectionElement;
+//assign section checkout to variable
+let checkoutSectionElement;
+
+let cartMenu;
+let mainMenu;
+
 //constants
 const URL_ORIGIN = window.location.origin;
 const URL_PATHNAME = window.location.pathname;
@@ -56,6 +69,20 @@ const initialize = () => {
     populateCurrencyDropBox();
     //TODO: The displayStore rewrite everything on the list, erasing the binds. remake all catalog binds as a function to execute inside displayStoreItems
     displayStoreItems();
+    //section elements on the page
+    //assign section catalog to variable
+    catalogSectionElement = document.querySelector("section#catalogSection");
+    //assign section cart to variable
+    cartSectionElement = document.querySelector("section#cartSection");
+    //assign section currency to variable
+    currencySectionElement = document.querySelector("section#currencySection");
+    //assign section checkout to variable
+    checkoutSectionElement = document.querySelector("section#checkoutSection");
+
+    //assign menus to variables
+    cartMenu = document.querySelector("nav#cartMenu");
+    mainMenu = document.querySelector("nav#mainMenu");
+
     //bind additions and subtractions to catalog items
     bindElementsOnCatalog();
     initialized = true;
@@ -337,15 +364,7 @@ const displayStoreItems = function(){
     return storeItemsContentElement;
 }
 
-const toggleMenuVisibility = function(){
-    console.log("hello! ToggleMenuVisibility is listening!");
-    toggleGreyAreaVisibility() ;
-    menu.isVisible = !menu.isVisible;
-    console.log("state of menu after toggling:", menu);
-    menu.isVisible ? 
-        document.querySelector("container nav#mainMenu").setAttribute("style","display:block;") : 
-        document.querySelector("container nav#mainMenu").setAttribute("style","display:none;");
-}
+
 
 //actions to cart
 const addAmountToGoToCart = function(){
@@ -463,22 +482,61 @@ const addItemToCart = function(){
     }//if(resultFromCart.success)
 }
 
-const toggleCartMenuVisibility = function(){
-    console.log("hello! toggleCartMenuVisibility is listening!");
-    toggleGreyAreaVisibility() ;
-    cart.isVisible = !cart.isVisible;
-    cart.isVisible ? 
-        document.querySelector("container nav#cartMenu").setAttribute("style","display:block;") : 
-        document.querySelector("container nav#cartMenu").setAttribute("style","display:none;");
+//toggling elements
+
+const toggleMenuVisibility = function(){
+    
+    //debugger;
+    
+    menu.isVisible = !menu.isVisible;
+    
+    if(menu.isVisible){
+        //hide any other menus that are visible
+        let cartMenuElement = document.getElementById("cartMenu");
+        cartMenuElement.setAttribute("style","display:none;");
+        cart.isVisible = false;
+
+        document.getElementById("mainMenu").setAttribute("style","display:block;");
+        turnOnGreyArea();
+        
+    } else {
+        document.getElementById("mainMenu").setAttribute("style","display:none;");
+        turnOffGreyArea();
+    }
         
 }
 
-const toggleGreyAreaVisibility = function(){
-    console.log("hello! toggleGreyAreaVisibility is listening!");
-    greyArea.isVisible = !greyArea.isVisible;
-    greyArea.isVisible ? 
-        document.querySelector("#greyArea").setAttribute("style","display:block;min-height:"+document.body.clientHeight+"px") :
-        document.querySelector("#greyArea").setAttribute("style","display:none;");
+const toggleCartMenuVisibility = function(){
+
+    //debugger;
+    
+    cart.isVisible = !cart.isVisible;
+
+    if(cart.isVisible){
+        //hide any other menus that are visible
+        let mainMenuElement = document.getElementById("mainMenu");
+        mainMenuElement.setAttribute("style","display:none;");
+        menu.isVisible = false;
+
+        document.getElementById("cartMenu").setAttribute("style","display:block;");
+        turnOnGreyArea();
+        
+    } else {
+        document.getElementById("cartMenu").setAttribute("style","display:none;");
+        turnOffGreyArea();
+    }      
+}
+
+const turnOnGreyArea = function (){
+    let greyAreaElement = document.getElementById("greyArea");
+    greyAreaElement.setAttribute("style","display:block;min-height:"+document.body.clientHeight+"px");
+    greyArea.isVisible = true;
+}
+
+const turnOffGreyArea = function (){
+    let greyAreaElement = document.getElementById("greyArea");
+    greyAreaElement.setAttribute("style","display:none");
+    greyArea.isVisible = false;
 }
 
 const updateCartMenu = function(){
@@ -488,6 +546,7 @@ const updateCartMenu = function(){
     if(cart.items.length===0){
 
         document.querySelector("#cartMenuContainer #messageEmpty").setAttribute("style","display:block;");
+        document.querySelector("#cartMenuContainer #cartMenuActionButtons").setAttribute("style","display:none;");
         document.querySelector("#cartMenuContainer #openCart").setAttribute("style","display:none;");
         document.querySelector("#cartMenuContainer #emptyCart").setAttribute("style","display:none;");
         document.querySelector("#cartMenuContainer #cartMenuItems").setAttribute("style","display:none;");
@@ -586,15 +645,65 @@ const updateCartMenu = function(){
         totalAmountOfCartContainer.appendChild(totalAmountOfCartPrice);
 
         cartMenuItemsArea.appendChild(totalAmountOfCartContainer);
-        
+
         document.querySelector("#cartMenuContainer #messageEmpty").setAttribute("style","display:none;");
+        document.querySelector("#cartMenuContainer #cartMenuActionButtons").setAttribute("style","display:flex;");
         document.querySelector("#cartMenuContainer #openCart").setAttribute("style","display:block;");
         document.querySelector("#cartMenuContainer #emptyCart").setAttribute("style","display:block;");
         document.querySelector("#cartMenuContainer #cartMenuItems").setAttribute("style","display:flex;");
-
     }
-    
 }
+
+const switchToCart = function(){
+
+    //control visibilities
+    catalogSectionElement.style.display = "none";
+    cartSectionElement.style.display = "block";
+    currencySectionElement.style.display = "none";
+    checkoutSectionElement.style.display = "none";
+    wrapUpSwitch();
+
+}//end of switchToCart
+
+const switchToCatalog = function(){
+    
+    //control visibilities
+    catalogSectionElement.style.display = "block";
+    cartSectionElement.style.display = "none";
+    currencySectionElement.style.display = "none";
+    checkoutSectionElement.style.display = "none";
+    wrapUpSwitch();
+
+}//end of switchToCatalog
+
+const switchToCurrency = function(){
+    
+    //control visibilities
+    catalogSectionElement.style.display = "none";
+    cartSectionElement.style.display = "none";
+    currencySectionElement.style.display = "block";
+    checkoutSectionElement.style.display = "none";
+    wrapUpSwitch();
+
+}//end of switchToCurrency
+
+const switchToCheckout = function(){
+    
+    //control visibilities
+    catalogSectionElement.style.display = "none";
+    cartSectionElement.style.display = "none";
+    currencySectionElement.style.display = "none";
+    checkoutSectionElement.style.display = "block";
+    wrapUpSwitch();
+
+}//end of switchToCurrency
+
+const wrapUpSwitch = function(){
+    turnOffGreyArea();
+    cartMenu.style.display = "none";
+    mainMenu.style.display = "none";
+}//end of wrapUpSwitch
+
 /*
     bind element events at catalog page
 */
@@ -610,7 +719,16 @@ const bindElementsOnCatalog = ()=>{
     document.querySelector("#cartMenuActionButtons #closeCartMenu").addEventListener("click",toggleCartMenuVisibility,false);
     //bind add to cart button
     document.querySelectorAll(".storeItemAddToCartColumn").forEach((element)=>element.addEventListener("click",addItemToCart));
+    //bind to switch to cart
+    document.querySelectorAll(".goToCart").forEach((element)=>element.addEventListener("click",switchToCart));
+    //bind to switch to catalog
+    document.querySelectorAll(".goToHome").forEach((element)=>element.addEventListener("click",switchToCatalog));
+    //bind to switch to currency
+    document.querySelectorAll(".goToCurrency").forEach((element)=>element.addEventListener("click",switchToCurrency));
+    //bind to switch to checkout
+    document.querySelectorAll(".goToCheckout").forEach((element)=>element.addEventListener("click",switchToCheckout));
 }
+
 
 //Sorts contents of an array ascendantly
 //based on example given at 
