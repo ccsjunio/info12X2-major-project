@@ -1,14 +1,16 @@
 body{
     display: flex;
     flex-flow: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     margin: 0px;
 }
 
 main{
     order: 2;
-    flex:1 100%;
-    padding:5px;
+    flex: 1 100%;
+    padding: 5px;
+    position: relative;
+    min-height: 91vh;
 }
 
 header{
@@ -24,6 +26,7 @@ header{
     left: 0px;
     z-index:20;
  }
+
  header #logo img{
      height: 20px;
  }
@@ -47,6 +50,9 @@ footer{
     padding: 7px 0 7px 0;
     text-align: center;
     color: white;
+    position: absolute;
+    bottom: 0;
+    width: 97%;
 }
 
 #greyArea{
@@ -58,6 +64,57 @@ footer{
     min-width: 100%;
     z-index:1;
     display:none;
+}
+
+section{
+    display: block;
+    padding-bottom: 17px;
+}
+
+.modal{
+    position: absolute;
+    width: 33vh;
+    min-height: 50vh;
+    top: 12vh;
+    left: 10vh;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+    z-index: 20;
+    align-content: unset;
+}
+
+.modal .alertImage{
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+}
+
+.modal .modalText{
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+}
+
+.modal .actionButtons{
+    display: flex;
+    flex-flow: row;
+    text-align: center;
+    padding: 40px;
+}
+
+.modal .actionButtons .actionButtonYes{
+    flex:1;
+}
+
+.modal .actionButtons .actionButtonNo{
+    flex:1;
+}
+
+.modal .actionButtons .actionButtonOk   {
+    flex:1;
 }
 
 

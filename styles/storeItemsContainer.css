@@ -102,3 +102,11 @@
     border:1px solid #ccc;
     border-radius:10px;
 }
+
+.moreOfThis{
+    background-color: #ccc;
+    font-weight: bolder;
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+}

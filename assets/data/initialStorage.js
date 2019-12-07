@@ -187,6 +187,20 @@ const initialStorage = [
         - Temperature rated -40 degree celsius", //String - the description of the product
         image : 'GOBI_00006.png',
         originalSource: 'https://www.amazon.ca/dp/B0036FT0C0/ref=s9_acsd_otopr_hd_bw_bBEc0hP_c2_x_1_i?pf_rd_m=A1IM4EOPHS76S7&pf_rd_s=merchandised-search-11&pf_rd_r=4MTGGWC4GBTJ6DGYDYWP&pf_rd_t=101&pf_rd_p=fc5001b2-5e36-52ee-9dde-d805802c7210&pf_rd_i=10293389011&th=1'
+    },
+    {
+        id : "GOBI_00007",
+        name : "I Hate CSS Sweater",
+        price : 35.00,
+        qtyOnHand : 6,
+        maxPerCustomer : 3, 
+        category : "Clothes", 
+        costOfShipping : 7.99, 
+        reviews : [
+        ], 
+        description : "Beautiful white sweather with a Hate CSS logo", //String - the description of the product
+        image : 'GOBI_00007.png',
+        originalSource: 'https://www.customink.com/ndx/?PK=150000&SK=150000&cid=rxt0-00c2-t2ke#/next/quote'
     }
 ];
 

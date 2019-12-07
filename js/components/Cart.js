@@ -23,6 +23,20 @@ const Cart = class {
         return {success:true,items:this.items,quantityOfDistinctItems:this.quantityOfDistinctItems,isVisible:this.isVisible};
     }
 
+    incrementItemQty(itemId){
+        let element = this.items[this.items.findIndex((element)=>element.id==itemId)];
+        element.qty ++;
+        this.updateTotalPrice();
+        return {success:true,items:this.items,quantityOfDistinctItems:this.quantityOfDistinctItems,isVisible:this.isVisible};
+    }
+
+    decrementItemQty(itemId){
+        let element = this.items[this.items.findIndex((element)=>element.id==itemId)];
+        element.qty --;
+        this.updateTotalPrice();
+        return {success:true,items:this.items,quantityOfDistinctItems:this.quantityOfDistinctItems,isVisible:this.isVisible};
+    }
+
     removeItem(element){
         let itemId = element.id;
 
