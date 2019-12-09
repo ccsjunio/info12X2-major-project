@@ -1,6 +1,6 @@
 header container nav#mainMenu{
     position: absolute;
-    width: 80%;
+    width: auto;
     background-color: #fffbe8;
     font-size: 0.9rem;
     padding: 11px;

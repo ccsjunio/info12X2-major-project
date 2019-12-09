@@ -8,7 +8,7 @@ section#detailsSection .container .miscContainer{
     flex: 1;
     order: 2;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 30px 0 30px 0;
 }
 
@@ -16,7 +16,7 @@ section#detailsSection .container .miscContainer .image{
     flex: 1;
     justify-content: center;
     display: flex;
-    order: 2;
+    order: 1;
     flex-basis: 75%;
 }
 
@@ -64,7 +64,7 @@ section#detailsSection .container .miscContainer .numbersContainer{
 
 section#detailsSection .container .miscContainer .numbersContainer .priceContainer{
     flex:1;
-    order:1;
+    order:2;
     color:rgb(1,83,1);
 
 }
@@ -276,6 +276,288 @@ section#detailsSection .container .reviewsContainer .newReviewContainer .newRevi
 section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm .submitButtonBlankError{
     color:white;
     background-color:red;
+}
+
+@media only screen and (min-width:361px){
+    section#detailsSection .container{
+        display:flex;
+        flex-flow:column;
+    }
+    
+    section#detailsSection .container .miscContainer{
+        font-weight: bolder;
+        flex: 1;
+        order: 2;
+        display: flex;
+        flex-direction: row;
+        margin: 30px 0 30px 0;
+    }
+    
+    section#detailsSection .container .miscContainer .image{
+        flex: 1;
+        justify-content: center;
+        display: flex;
+        order: 2;
+        flex-basis: 75%;
+    }
+    
+    section#detailsSection .container .miscContainer .image img{
+        max-width: 100%;
+        max-height: 400px;
+    }
+    
+    section#detailsSection .container .name{
+        flex:1;
+        display:flex;
+        order:1;
+        font-weight: bolder;
+        font-size: 1.5rem;;
+    }
+    
+    section#detailsSection .container .descriptionContainer{
+        flex:1;
+        display:flex;
+        order:3;
+        flex-flow: column;
+    }
+    
+    section#detailsSection .container .descriptionContainer .more{
+        font-weight: bolder;
+        color:#555;
+    }
+    
+    section#detailsSection .container .descriptionContainer .less{
+        font-weight: bolder;
+        color:#555;
+        display:none;
+    }
+    
+    section#detailsSection .container .miscContainer .numbersContainer{
+        font-weight: bolder;
+        flex: 1;
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        text-align: center;
+        flex-basis: 25%;
+    }
+    
+    section#detailsSection .container .miscContainer .numbersContainer .priceContainer{
+        flex:1;
+        order:1;
+        color:rgb(1,83,1);
+    
+    }
+    
+    section#detailsSection .container .miscContainer .numbersContainer .quantityContainer{
+        padding: 3px;
+        color: #9e6600;
+        font-weight: bolder;
+        flex: 1;
+        order: 1;
+        display:flex;
+        flex-flow: column;
+    }
+    
+    section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerInformation{
+        flex: 2;
+        order: 1;
+        border: 1px solid #9e6600;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+    }
+    
+    section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerAddSubtractContainer{
+        order: 2;
+        padding: 0 5px 0 5px;
+        font-size: 1em;
+        border-radius: 0px;
+        background-color: white;
+        color: #9e6600;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        text-align: center;
+        font-weight: bolder;
+        border-right: 1px solid #9e6600;
+        border-left: 1px solid #9e6600;
+    }
+    section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerAdd{
+        order: 2;
+        padding: 5px 5px 5px 10px;
+        flex: 1;
+        order: 2;
+        border-right: 1px solid white;
+    }
+    section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerSubtract{
+        order: 1;
+        padding: 5px 10px 5px 5px;
+        flex: 1;
+        order: 1;
+    }
+    
+    section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerAddToCart{
+        order: 3;
+        padding: 10px;
+        font-size: 0.8em;
+        border-radius: 0 0 0 0;
+        background-color: #9e6600;
+        color: white;
+        border-bottom: 1px solid white;
+    }
+    
+    section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityGotOfMaximum{
+        order: 4;
+        padding: 5px;
+        font-size: 0.8em;
+        border-radius: 0 0 10px 10px;
+        background-color: #9e6600;
+        color: white;
+    }
+    
+    section#detailsSection .container .reviewsContainer{
+        order: 5;
+        display: flex;
+        flex-flow: column;
+        padding: 10px;
+        color: #555;
+        border-top: 1px #555 solid;
+        margin-top: 10px;
+    }
+    
+    section#detailsSection .container .reviewsContainer .header{
+        order: 1;
+        flex: 1;
+        font-size: 1.5rem;
+        font-weight: bolder;
+    }
+    
+    section#detailsSection .container .reviewsContainer .item{
+        order: 2;
+        flex: 1;
+        display: flex;
+        flex-flow: column;
+    }
+    
+    section#detailsSection .container .reviewsContainer .item .title{
+        order: 1;
+        flex: 1;
+        font-weight: bolder;
+        border-top: 1px solid #ccc;
+        padding-top: 5px;
+        margin-top: 5px;
+    }
+    
+    section#detailsSection .container .reviewsContainer .item .authorDateContainer{
+        order: 2;
+        flex: 1;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-content: space-between;
+    }
+    
+    section#detailsSection .container .reviewsContainer .item .authorDateContainer .date{
+        order: 2;
+        flex: 1;
+        margin-left: 4px;
+        text-align: right;
+    }
+    
+    section#detailsSection .container .reviewsContainer .item .authorDateContainer .author{
+        order: 1;
+        flex: 1;
+        font-style: italic;
+        color: rgb(0, 0, 126);
+    }
+    
+    section#detailsSection .container .reviewsContainer .item .content{
+        order: 3;
+        flex: 1;
+        font-size: 0.95rem;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer{
+        display: flex;
+        flex-flow: column;
+        order: 4;
+        margin-top: 10px;
+        border: 1px solid green;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewButton{
+        flex:1;
+        order:1;
+        background-color:green;
+        color:white;
+        padding:5px;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm{
+        flex: 1;
+        order: 2;
+        display: none;
+        flex-flow: column;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm fieldset.author{
+        flex:1;
+        order:1;
+        display:flex;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm fieldset.author legend{
+        flex:1;
+        order:1;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm fieldset.author input{
+        flex:1;
+        order:2;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm fieldset.review{
+        flex:1;
+        order:2;
+        display:flex;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm fieldset.review legend{
+        flex:1;
+        order:1;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm fieldset.review input{
+        flex:1;
+        order:2;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm .reviewSubmitButton{
+        flex:1;
+        order:4;
+        background-color:green;
+        color:white;
+        font-weight: 1.2rem;
+        text-align: left;
+        padding: 11px;
+        font-size: 1rem;
+    }
+    
+    .mandatoryInputEmpty{
+        color:red;
+        background-color:rgb(255, 190, 190);
+    }
+    
+    .mandatoryInputFull{
+        color:inherit;
+        background-color:white;
+    }
+    
+    section#detailsSection .container .reviewsContainer .newReviewContainer .newReviewForm .submitButtonBlankError{
+        color:white;
+        background-color:red;
+    }
 }
 
 

@@ -1,6 +1,6 @@
 nav#cartMenu{
     position: absolute;
-    width: 80%;
+    width: auto;
     background-color: #fffbe8;
     font-size: 0.9rem;
     padding: 11px;
@@ -150,5 +150,15 @@ header container #cartBadge{
     color: white;
     padding: 2px;
     display: none;
+}
+
+@media only screen and (min-width:600px){
+    header container #cartBadge{
+        right:45px;
+    }
+
+    header container #cartMenu{
+        right:26px;
+    }
 }
 

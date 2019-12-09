@@ -1,6 +1,37 @@
+section#catalogSection #filter #catalogFilter{
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    font-weight: bolder;
+    font-size: 0.9rem;
+}
+
+section#catalogSection #filter #catalogFilter select,button{
+    font-size: 1rem;
+    margin-right: 5px;
+    flex:1;
+    text-align: left;
+}
+
+section#catalogSection #filter #catalogFilter button#buttonClearFilter{
+    order:1;
+}
+
+section#catalogSection #filter #catalogFilter select#catalogCategorySelection{
+    order:2;
+}
+
+section#catalogSection #filter #catalogFilter select#catalogSort{
+    order:3;
+}
+
+section#catalogSection #filter #catalogFilter select#currencySelection{
+    order:4;
+}
+
 #storeItemsContainer{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
 }
 
 .storeItemsRow{
@@ -109,4 +140,412 @@
     color: white;
     padding: 3px;
     border-radius: 5px;
+}
+
+@media only screen and (min-width:400px){
+    section#catalogSection #filter #catalogFilter{
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        font-weight: bolder;
+        font-size: 1rem;
+    }
+
+    section#catalogSection #filter #catalogFilter select,button{
+        font-size: 1rem;
+        margin-right: 5px;
+        flex:1;
+    }
+
+    #storeItemsContainer{
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    
+    .storeItemsRow{
+        display: flex;
+        flex-flow: column;
+        border: 1px solid rgb(121, 121, 121);
+        border-radius: 10px;
+        padding: 10px;
+        width: 87%;
+        margin-bottom: 4px;
+        justify-self: stretch;
+        justify-content: space-between;
+    }
+    
+    .storeItemsColumn{
+        flex: 1 100%;
+    }
+    
+    .storeItemImageColumn{
+        height: 100px;
+        text-align: center;
+        order:1;
+    }
+    
+    .storeItemImageColumn img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .storeItemNameColumn{
+        order:3;
+        padding:5px;
+        color:rgb(104, 104, 104);
+    }
+    
+    .storeItemIdColumn{
+        order:6;
+        padding:5px;
+        font-size: 0.8rem;
+    }
+    
+    .storeItemPriceColumn{
+        order:2;
+        color:rgb(1, 83, 1);
+        font-weight: bolder;
+        padding:5px;
+    }
+    
+    .storeItemQtyOnHandColumn{
+        order:4;
+        padding:5px;
+    }
+    
+    .storeItemMaxPerCustomerColumn{
+        order:5;
+        padding: 5px;
+    
+    }
+    
+    .storeItemAddToCartContainerColumn{
+        display:flex;
+        flex-flow: row;
+        order:7;
+        padding: 5px;
+        justify-content: space-between;
+    }
+    
+    .storeItemAddToCartColumn{
+        background-color: #e49400;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        order:8;
+    }
+    
+    .storeItemAddAmountToCartColumn{
+        order:3;
+        
+    }
+    
+    .storeItemSubtractAmountFromCartColumn{
+        order:1;
+        
+    }
+    
+    .storeItemAmountToCartColumn{
+        order:2;
+        background-color: white;
+        color: black;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        font-weight: bolder;
+    }
+    
+    .overlimit{
+        background-color:#ffe7c5;
+        border:1px solid #ccc;
+        border-radius:10px;
+    }
+    
+    .moreOfThis{
+        background-color: #ccc;
+        font-weight: bolder;
+        color: white;
+        padding: 3px;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (min-width:450px){
+    section#catalogSection #filter #catalogFilter{
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        font-weight: bolder;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width:600px){
+    article#filter{
+        margin-bottom:5px;
+    }
+
+    section#catalogSection #filter #catalogFilter{
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        font-weight: bolder;
+        font-size: 1rem;
+    }
+
+    section#catalogSection #filter #catalogFilter select,button{
+        font-size: 1rem;
+        margin-right: 0px;
+        flex:1;
+    }
+
+    section#catalogSection #catalogList #storeItemsContainer{
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+        grid-template-rows: auto;
+    }
+
+    section#catalogSection #catalogList #storeItemsContainer .storeItemsRow{
+        display: flex;
+        flex-flow: column;
+        border: 1px solid rgb(181, 181, 181);
+        padding: 10px;
+        width: 87%;
+        justify-self: stretch;
+        justify-content: space-between;
+    }
+
+    
+    .storeItemsColumn{
+        flex: 1 100%;
+    }
+    
+    .storeItemImageColumn{
+        height: 100px;
+        text-align: center;
+        order:1;
+    }
+    
+    .storeItemImageColumn img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .storeItemNameColumn{
+        order:3;
+        padding:5px;
+        color:rgb(104, 104, 104);
+    }
+    
+    .storeItemIdColumn{
+        order:6;
+        padding:5px;
+        font-size: 0.8rem;
+    }
+    
+    .storeItemPriceColumn{
+        order:2;
+        color:rgb(1, 83, 1);
+        font-weight: bolder;
+        padding:5px;
+    }
+    
+    .storeItemQtyOnHandColumn{
+        order:4;
+        padding:5px;
+    }
+    
+    .storeItemMaxPerCustomerColumn{
+        order:5;
+        padding: 5px;
+    
+    }
+    
+    .storeItemAddToCartContainerColumn{
+        display:flex;
+        flex-flow: row;
+        order:7;
+        padding: 5px;
+        justify-content: space-between;
+    }
+    
+    .storeItemAddToCartColumn{
+        background-color: #e49400;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        order:8;
+    }
+    
+    .storeItemAddAmountToCartColumn{
+        order:3;
+        
+    }
+    
+    .storeItemSubtractAmountFromCartColumn{
+        order:1;
+        
+    }
+    
+    .storeItemAmountToCartColumn{
+        order:2;
+        background-color: white;
+        color: black;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        font-weight: bolder;
+    }
+    
+    .overlimit{
+        background-color:#ffe7c5;
+        border:1px solid #ccc;
+        border-radius:10px;
+    }
+    
+    .moreOfThis{
+        background-color: #ccc;
+        font-weight: bolder;
+        color: white;
+        padding: 3px;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (min-width:970px){
+    article#filter{
+        margin-bottom:5px;
+    }
+
+    section#catalogSection #filter #catalogFilter{
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        font-weight: bolder;
+        font-size: 1.5rem;
+    }
+
+    section#catalogSection #filter #catalogFilter select,button{
+        font-size: 1.3rem;
+        margin-right: 5px;
+        flex:1;
+    }
+
+    section#catalogSection #catalogList #storeItemsContainer{
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: auto;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    section#catalogSection #catalogList #storeItemsContainer .storeItemsRow{
+        display: flex;
+        flex-flow: column;
+        border: 1px solid rgb(181, 181, 181);
+        padding: 15px;
+        width: 87%;
+        justify-self: stretch;
+        justify-content: space-between;
+        border-radius:0px;
+        margin-bottom:0px;
+    }
+    
+    .storeItemsColumn{
+        flex: 1 100%;
+    }
+    
+    .storeItemImageColumn{
+        height: 100px;
+        text-align: center;
+        order:1;
+    }
+    
+    .storeItemImageColumn img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .storeItemNameColumn{
+        order:3;
+        padding:5px;
+        color:rgb(104, 104, 104);
+    }
+    
+    .storeItemIdColumn{
+        order:6;
+        padding:5px;
+        font-size: 0.8rem;
+    }
+    
+    .storeItemPriceColumn{
+        order:2;
+        color:rgb(1, 83, 1);
+        font-weight: bolder;
+        padding:5px;
+    }
+    
+    .storeItemQtyOnHandColumn{
+        order:4;
+        padding:5px;
+    }
+    
+    .storeItemMaxPerCustomerColumn{
+        order:5;
+        padding: 5px;
+    
+    }
+    
+    .storeItemAddToCartContainerColumn{
+        display:flex;
+        flex-flow: row;
+        order:7;
+        padding: 5px;
+        justify-content: space-between;
+    }
+    
+    .storeItemAddToCartColumn{
+        background-color: #e49400;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        order:8;
+    }
+    
+    .storeItemAddAmountToCartColumn{
+        order:3;
+        
+    }
+    
+    .storeItemSubtractAmountFromCartColumn{
+        order:1;
+        
+    }
+    
+    .storeItemAmountToCartColumn{
+        order:2;
+        background-color: white;
+        color: black;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        font-weight: bolder;
+    }
+    
+    .overlimit{
+        background-color:#ffe7c5;
+        border:1px solid #ccc;
+        border-radius:10px;
+    }
+    
+    .moreOfThis{
+        background-color: #ccc;
+        font-weight: bolder;
+        color: white;
+        padding: 3px;
+        border-radius: 5px;
+    }
 }
