@@ -29,6 +29,11 @@ nav#cartSection{
     margin-top: 30px;
 }
 
+#messageEmptyCart .goToCatalog{
+    color: #7e0000;
+    font-size:1.95rem;
+}
+
 #messageEmptyCart img{
     max-width: 72%;
     padding:40px;
@@ -99,15 +104,15 @@ nav#cartSection{
     border-left: 1px solid red;
 }
 .cartItem .qtyColumn .qtyColumnAdd{
-    order: 1;
-    padding: 5px 10px 5px 5px;
+    order: 2;
+    padding: 5px 5px 5px 10px;
     flex: 1;
-    order: 1;
+    order: 2;
     border-right: 1px solid white;
 }
 .cartItem .qtyColumn .qtyColumnSubtract{
-    order: 2;
-    padding: 5px 5px 5px 10px;
+    order: 1;
+    padding: 5px 10px 5px 5px;
     flex: 1;
     order: 1;
 }

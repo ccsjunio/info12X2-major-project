@@ -37,9 +37,11 @@ const Cart = class {
         return {success:true,items:this.items,quantityOfDistinctItems:this.quantityOfDistinctItems,isVisible:this.isVisible};
     }
 
-    removeItem(element){
-        let itemId = element.id;
-
+    removeItem(itemId){
+        //remove item from Cart TODO: transfer method to class Cart
+        this.items.splice(this.items.findIndex((element)=>element.id==itemId),1);
+        //update distinct qty on cart
+        this.quantityOfDistinctItems --;
         return {success:true,items:this.items,quantityOfDistinctItems:this.quantityOfDistinctItems,isVisible:this.isVisible};
     }
 
@@ -90,11 +92,6 @@ const Cart = class {
 
     retrieveAllItems(){
 
-    }
-
-    removeItem(itemId){
-
-        
     }
 
     removeAllItems(){

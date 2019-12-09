@@ -50,7 +50,7 @@ footer{
     padding: 7px 0 7px 0;
     text-align: center;
     color: white;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 97%;
 }
