@@ -140,6 +140,7 @@ nav#cartSection{
     font-weight: bolder;
     flex: 2;
     order: 4;
+    text-align: right;
 }
 
 .cartItem .imageColumn{

@@ -562,8 +562,8 @@ const handleAddToCartFromDetails = ()=>{
     const qtyFromMaximum = document.querySelector(`section#detailsSection .quantityContainer .quantityGotOfMaximum .quantityGot[itemId='${itemId}']`);
 
     const qtyInCart = cart.items.findPerId(itemId) !== undefined ? parseInt(+cart.items.findPerId(itemId).qty) : 0;
-    const qtyMaxPerCustomer = parseInt(+store.items.findPerId(itemId).maxPerCustomer);
-    const qtyOnHand = parseInt(+store.items.findPerId(itemId).qtyOnHand);
+    const qtyMaxPerCustomer = parseInt(+storeElement.maxPerCustomer);
+    const qtyOnHand = parseInt(+storeElement.qtyOnHand);
     const qtyToCart = parseInt(+qtyToCartElement.getAttribute("qtytocart"));
     
     //create new item to add to cart
@@ -571,7 +571,7 @@ const handleAddToCartFromDetails = ()=>{
         itemId,
         storeElement.price,
         +qtyToCart,
-        +storeElement.costToShipping
+        +storeElement.costOfShipping
     );
     cart.addItem(newItemToCart);
     qtyToCartElement.setAttribute("qtytocart",0);
