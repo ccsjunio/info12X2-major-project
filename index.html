@@ -27,6 +27,50 @@
         
     </head>
     <body onload="initialize();">
+
+        <header>
+            <container>
+                <nav id="menuIcon"><i class="material-icons" id="hamburguer">menu</i></nav>
+                <nav id="mainMenu" class="menu">
+                    <ul>
+                        <div id="closeMenu"><i class="material-icons">close</i></div>
+                        <li><a href="#home" class="goToHome">Catalog</a></li>
+                        <li><a href="#cart" class="goToCart">Cart</a></li>
+                        <li>
+                            <a href="#currency" class="goToCurrency">
+                                Currency 
+                                <i class="material-icons expand-more">expand_more</i>
+                                <i class="material-icons expand-less">expand_less</i>
+                            </a>
+                            <ul class="goToCurrency"></ul>
+                        </li>
+                        <li><a href="#checkout" class="goToCheckout">Checkout</a></li>
+                        <li><a href="#sources" class="goToSources">Image Sources</a></li>
+                    </ul>
+                    <div class="greyArea"></div>
+                </nav>
+                <div id="logo">
+                    <img src="./assets/logo/logoGobiDark.png" alt="gobi logo"/>
+                </div>
+                <div class="currentTime" id="currentTimeAtHeader"></div>
+                <nav id="cart"><i class="material-icons">shopping_cart</i></nav>
+                <div id="cartBadge">1</div>
+                <nav id="cartMenu" class="menu">
+                    <div id="cartMenuContainer">
+                        <div id="messageEmpty">Your cart is empty</div>
+                        <div id="cartMenuActionButtons">
+                            <div id="openCart" class="cartMenuItem goToCart">open cart</div>
+                            <div id="emptyCart" class="cartMenuItem actionEmptyCart">emptyCart</div>
+                            <div id="closeCartMenu" class="cartMenuItem">X</div>
+                        </div>
+                        <div id="cartMenuItems"> 
+                        </div>
+                    </div><!-- end of cartMenuContainer -->
+                </nav><!-- end of cart menu -->
+            </container>
+        </header>
+
+
         <main>
             <section id="catalogSection">
                 <article id="filter">
@@ -82,46 +126,7 @@
                  <div>Flag Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             </footer>
         </main>
-        <header>
-            <container>
-                <nav id="menuIcon"><i class="material-icons" id="hamburguer">menu</i></nav>
-                <nav id="mainMenu" class="menu">
-                    <ul>
-                        <div id="closeMenu"><i class="material-icons">close</i></div>
-                        <li><a href="#home" class="goToHome">Catalog</a></li>
-                        <li><a href="#cart" class="goToCart">Cart</a></li>
-                        <li>
-                            <a href="#currency" class="goToCurrency">
-                                Currency 
-                                <i class="material-icons expand-more">expand_more</i>
-                                <i class="material-icons expand-less">expand_less</i>
-                            </a>
-                            <ul class="goToCurrency"></ul>
-                        </li>
-                        <li><a href="#checkout" class="goToCheckout">Checkout</a></li>
-                        <li><a href="#sources" class="goToSources">Image Sources</a></li>
-                    </ul>
-                    <div class="greyArea"></div>
-                </nav>
-                <div id="logo">
-                    <img src="./assets/logo/logoGobiDark.png" alt="gobi logo"/>
-                </div>
-                <nav id="cart"><i class="material-icons">shopping_cart</i></nav>
-                <div id="cartBadge">1</div>
-                <nav id="cartMenu" class="menu">
-                    <div id="cartMenuContainer">
-                        <div id="messageEmpty">Your cart is empty</div>
-                        <div id="cartMenuActionButtons">
-                            <div id="openCart" class="cartMenuItem goToCart">open cart</div>
-                            <div id="emptyCart" class="cartMenuItem actionEmptyCart">emptyCart</div>
-                            <div id="closeCartMenu" class="cartMenuItem">X</div>
-                        </div>
-                        <div id="cartMenuItems"> 
-                        </div>
-                    </div><!-- end of cartMenuContainer -->
-                </nav><!-- end of cart menu -->
-            </container>
-        </header>
+        
         
         <div id="greyArea"></div>
 
