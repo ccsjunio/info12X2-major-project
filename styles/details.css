@@ -108,12 +108,14 @@ section#detailsSection .container .miscContainer .numbersContainer .quantityCont
     flex: 1;
     order: 2;
     border-right: 1px solid white;
+    cursor:pointer;
 }
 section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerSubtract{
     order: 1;
     padding: 5px 10px 5px 5px;
     flex: 1;
     order: 1;
+    cursor:pointer;
 }
 
 section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerAddToCart{
@@ -124,6 +126,7 @@ section#detailsSection .container .miscContainer .numbersContainer .quantityCont
     background-color: #9e6600;
     color: white;
     border-bottom: 1px solid white;
+    cursor:pointer;
 }
 
 section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityGotOfMaximum{
@@ -389,12 +392,14 @@ section#detailsSection .container .reviewsContainer .newReviewContainer .newRevi
         flex: 1;
         order: 2;
         border-right: 1px solid white;
+        cursor:pointer;
     }
     section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerSubtract{
         order: 1;
         padding: 5px 10px 5px 5px;
         flex: 1;
         order: 1;
+        cursor:pointer;
     }
     
     section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityContainerAddToCart{
@@ -405,6 +410,7 @@ section#detailsSection .container .reviewsContainer .newReviewContainer .newRevi
         background-color: #9e6600;
         color: white;
         border-bottom: 1px solid white;
+        cursor:pointer;
     }
     
     section#detailsSection .container .miscContainer .numbersContainer .quantityContainer .quantityGotOfMaximum{

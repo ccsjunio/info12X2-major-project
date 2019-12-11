@@ -120,12 +120,14 @@ nav#cartSection{
     flex: 1;
     order: 2;
     border-right: 1px solid white;
+    cursor:pointer;
 }
 .cartItem .qtyColumn .qtyColumnSubtract{
     order: 1;
     padding: 5px 10px 5px 5px;
     flex: 1;
     order: 1;
+    cursor:pointer;
 }
 
 .cartItem .qtyColumn .qtyColumnRemove{
@@ -137,6 +139,7 @@ nav#cartSection{
     color: white;
     font-weight: bolder;
     font-size: 1.5rem;
+    cursor:pointer;
 }
 
 .cartItem .nameColumn{
@@ -330,12 +333,14 @@ nav#cartSection{
         flex: 1;
         order: 2;
         border-right: 1px solid white;
+        cursor:pointer;
     }
     .cartItem .qtyColumn .qtyColumnSubtract{
         order: 1;
         padding: 5px 10px 5px 5px;
         flex: 1;
         order: 1;
+        cursor:pointer;
     }
     
     .cartItem .qtyColumn .qtyColumnRemove{
@@ -345,6 +350,7 @@ nav#cartSection{
         border-radius: 0 0 10px 10px;
         background-color: red;
         color: white
+        cursor:pointer;
     }
 
     .cartItem .imageColumn{
