@@ -561,3 +561,26 @@ section#detailsSection .container .reviewsContainer .newReviewContainer .newRevi
 }
 
 
+@media only screen and (min-width:600px){
+    section#detailsSection .container .reviewsContainer .item .authorDateContainer{
+        order: 2;
+        flex: 1;
+        display: flex;
+        flex-flow: row;
+    }
+    
+    section#detailsSection .container .reviewsContainer .item .authorDateContainer .date{
+        order: 2;
+        flex: 1;
+        margin-left: 4px;
+        text-align: left;
+        color: rgb(0,0,126);
+    }
+    
+    section#detailsSection .container .reviewsContainer .item .authorDateContainer .author{
+        order: 1;
+        flex: 1;
+        font-style: italic;
+        color: rgb(0, 0, 126);
+    }
+}

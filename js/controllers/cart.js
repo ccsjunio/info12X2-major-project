@@ -166,7 +166,7 @@ const updateCart = function(){
         document.querySelector("#cartMenuContainer #cartMenuItems").setAttribute("style","display:none;");
 
         //for cart page
-        document.querySelector("#cartContainer #messageEmptyCart").setAttribute("style","display:block;");
+        document.querySelector("#cartContainer #messageEmptyCart").setAttribute("style","display:flex;");
         document.querySelector("#cartContainer #cartActionButtons").setAttribute("style","display:none;");
         document.querySelector("#cartContainer #openCheckout").setAttribute("style","display:none;");
         document.querySelector("#cartContainer #emptyAllCart").setAttribute("style","display:none;");
@@ -395,11 +395,21 @@ const updateCart = function(){
         cartItemsAreaMenu.appendChild(totalAmountOfCartContainerMenu);
         cartItemsArea.appendChild(totalAmountOfCartContainer);
 
-        let paymentButton = document.createElement("div");
-        paymentButton.id="payPalPaymentCanvas";
-        paymentButton.className = "cartItem";
-        cartItemsArea.appendChild(paymentButton);
-        /*
+        let paymentContainer = document.createElement("div");
+        cartItemsArea.appendChild(paymentContainer);
+        paymentContainer.className = "cartItem paymentContainer";
+
+        let checkOutButton = document.createElement("div");
+        paymentContainer.appendChild(checkOutButton);
+        checkOutButton.className = "checkOutButton";
+        checkOutButton.textContent = "checkout";
+
+        let paymentCanvas = document.createElement("div");
+        paymentContainer.appendChild(paymentCanvas);
+        paymentCanvas.className = "paymentCanvas";
+        paymentCanvas.id = "payPalPaymentCanvas";
+        paymentCanvas.setAttribute("defaultDisplayMode","block");
+
         paypal.Buttons({
             createOrder: function(data, actions) {
               // This function sets up the details of the transaction, including the amount and line item details.
@@ -419,15 +429,18 @@ const updateCart = function(){
               });
             }
           }).render('#payPalPaymentCanvas');
-        */
+        
+        
 
         //bind actions to buttons
-        //bind action to remove item from cart
+        //action to remove item from cart
         document.querySelectorAll(`.cartItem .qtyColumnRemove`).forEach((element)=>element.addEventListener("click",askToRemoveItemFromCart));
-        //TODO: bind action to add quantity to item to cart
+        //bind action to add quantity to item to cart
         document.querySelectorAll(`.cartItem .qtyColumnAdd`).forEach((element)=>element.addEventListener("click",incrementQtyToItemFromCart));
-        //TODO: bind action to subtract quantity from item to cart
+        //bind action to subtract quantity from item to cart
         document.querySelectorAll(`.cartItem .qtyColumnSubtract`).forEach((element)=>element.addEventListener("click",decrementQtyFromItemFromCart));
+        //bind action to open checkout
+        document.querySelectorAll(`.checkOutButton`).forEach((element)=>element.addEventListener("click",togglePaymentCanvas,false));
 
         //for cart menu
         document.querySelector("#cartMenuContainer #messageEmpty").setAttribute("style","display:none;");
@@ -447,6 +460,23 @@ const updateCart = function(){
 
     bindElementsOnCatalog();
 
+}
+
+
+const togglePaymentCanvas = function(){
+    console.log("togglePaymentCanvas is listening");
+    document.querySelectorAll(`.paymentCanvas`).forEach((element)=>{
+        element.style.display==="none" ? (showPaymentCanvas()) : (hidePaymentCanvas());
+    });//end of document.querySelectorAll(`.paymentCanvas`).forEach((element)
+}
+
+const showPaymentCanvas = function(){
+    document.querySelectorAll(`.paymentCanvas`).forEach((element)=>element.style.display=element.getAttribute("defaultDisplayMode"));
+    
+}
+
+const hidePaymentCanvas = function(){
+    document.querySelectorAll(`.paymentCanvas`).forEach((element)=>element.style.display="none");
 }
 
 const incrementQtyToItemFromCart = function(){

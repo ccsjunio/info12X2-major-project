@@ -201,7 +201,190 @@ const initialStorage = [
         description : "Beautiful white sweather with a Hate CSS logo", //String - the description of the product
         image : 'GOBI_00007.png',
         originalSource: 'https://www.customink.com/ndx/?PK=150000&SK=150000&cid=rxt0-00c2-t2ke#/next/quote'
+    },
+    {
+        id : "GOBI_00008",
+        name : "I Love CSS Sweater",
+        price : 35.00,
+        qtyOnHand : 10,
+        maxPerCustomer : 2, 
+        category : "Clothes", 
+        costOfShipping : 9.99, 
+        reviews : [
+        ], 
+        description : "Beautiful white sweather with a Love CSS logo", //String - the description of the product
+        image : 'GOBI_00008.png',
+        originalSource: 'https://www.customink.com/ndx/?PK=150000&SK=150000&cid=rxt0-00c2-t2ke#/'
+    },
+    {
+        id : "GOBI_00009",
+        name : "L.O.L. Surprise! House",
+        price : 179.92,
+        qtyOnHand : 50,
+        maxPerCustomer : 5, 
+        category : "Clothes", 
+        costOfShipping : 10.99, 
+        reviews : [
+            {
+                author: "Karma762",
+                stars: 4,
+                date: "2019-02-19",
+                commentTitle: "My daughter loves this!",
+                comment: `This doll house is huge! There are a lot if parts in the box. It took my 8 year old and I almost 2 hours to put this together. The instructions were ok but could have been better like with sides. I had to take one part of the elevator off and flip it after I screwed it in because I put it upside down and didnt realize at first. Wasnt too hard but time consuming for one adult. There was only one issue we had with the actual doll house parts. On the top floor where the plastic balcony wall goes, the clear peice, there were dots for it but it was not drilled into the floor. So you knew where it went but it wouldn't go in. When my husband got home I had him drill those three holes so it would hold the wall peice. Other then that no issues with putting it together and it is very sturdy so far. It is wood type material so should last a good long time. Now for the accessories that go in the house. My daughter loves lol surprise so this amount of "surprises" made her month! Cute little moving boxes. Lots of furniture and accessories for the house. A few light up and spins peices. She of course added more. And I'm sure will add even more later. The moving truck and the realtor sign are cardboard and not going to last but those were the only accessories that were lower quality. Overall awesome doll house for lol surprise lovers. Or just doll house in general. Lots of other toys and accessories will fit and play well with this. [This review was collected as part of a promotion.]`
+            }
+        ], 
+        description : `In a world where babies run everything, little rockers rebel against nap time and teacher's pets become class presidents with "Free Pizza Fridays!" In this world, all work is play and nothing is dull cuz it's all a lil' surprising and outrageous!"`, //String - the description of the product
+        image : 'GOBI_00009.jpg',
+        originalSource: 'https://www.walmart.ca/en/ip/lol-surprise-house/6000198472859'
+    },
+    {
+        id : "GOBI_00010",
+        name : `Mega Construx 12.6" Pokemon Jumbo Pikachu Building Set`,
+        price : 107.62,
+        qtyOnHand : 45,
+        maxPerCustomer : 2, 
+        category : "Toys", 
+        costOfShipping : 2.99, 
+        reviews : [
+            {
+                author: "BoyMomofTwo",
+                stars: 4,
+                date: "2019-01-01",
+                commentTitle: "This set is amazing",
+                comment: `Our entire family was SO excited to see this jumbo Pikachu set! It was much bigger than we expected!
+
+                It took about 4 hours for my husband and two sons to build. There are 806 pieces, but the pieces are separated into multiple small bags. This makes searching for pieces easier since the instructions tell you which bag of pieces to work on. We also figured out that it helps to have someone working on sorting the pieces of each bag into separate piles of like pieces. This helped to speed up the process when the instructions asked for multiple identical pieces at a time.
+                
+                Once put together, Pikachu looks super cute! We will be putting him on display in our office/playroom with some of the other Pokémon Mega Construx sets that we hope to buy soon!
+                
+                Another thing that we love about this Pikachu is that he is poseable. His ears, head, arms, feet, and tail all move, so there are tons of different poses you could have him do if you are hoping to have him displayed on a display shelf. Our boys also loved moving him around for pretend play after he was done being built!
+                
+                We definitely recommend getting this set and have already told many of our friends about it! [This review was collected as part of a promotion.]`
+            }
+        ], 
+        description : `Prepare for a shockingly big battle with a buildable 12-inch Pikachu! Take your Pokemon training to new heights when you use over 600 pieces to build a 12-inch Pikachu! Featuring the beloved Pokemon's iconic lightning bolt-shaped tail, red cheeks and smiling face, this nearly life-size Pikachu is articulated so you can position it in different poses! Ideal for ages 8 and up.
+        • Buildable 12-inch Pikachu
+        • Pikachu has articulated legs, arms, tail and ears for poseability
+        • Combine with other Pokemon construction sets from Mega Construx
+        • Build your Pokemon world, and Build Beyond!`, //String - the description of the product
+        image : 'GOBI_00010.jpg',
+        originalSource: 'https://www.walmart.ca/en/ip/mega-construx-126-pokemon-jumbo-pikachu-building-set/6000198058908'
+    },
+    {
+        id : "GOBI_00011",
+        name : `Makeblock MAK-90040 Ultimate 10-in-1 Programmable Robot Kit for 9th-12th`,
+        price : 510.00,
+        qtyOnHand : 67,
+        maxPerCustomer : 5, 
+        category : "Toys", 
+        costOfShipping : 10.99, 
+        reviews : [], 
+        description : `If you are a gadget lover, our Electronics catalog is your dream destination. Choose from hundreds of gadgets and accessories to suit different uses and add some entertainment, facility and convenience to your life.
+
+        Features. Ten building forms will meet all your need for different application scenes. Great for learning robotics, electronics, graphical programming, Arduino programming and Python programming. Anodized 6061 aluminum mechanical parts with threaded-slot design brings an easy way of building the robot. Three powerful encoder motors enable you to feel every step of the robot. Wirelessly control your robot with smart devices through Bluetooth connection. High quality construction and modern designs. Superior quality performance and reliabilityMechanical Parts:. Aluminum Extrusion Parts. Plastic Timing Pulleys 90T. Plastic Gears. Tracks and Wheels. Cables. Others Hardware and AccessoriesElectronic Modules:. 1 x MegaPi. 1 x MegaPi Shield for RJ25. 1 x Bluetooth Module. 4 x Motor Driver. 3 x Encoder Motor. 1 x Ultrasonic Sensor. 1 x Line Follower Sensor. 1 x 3-Axis Accelerometer and Gyro Sensor. 1 x RJ25 Adapter. 1 x Shutter, 1 x Makeblock GripperBuilding Forms:. Ten Building formsWith paper assembling instruction for three main forms)Programming:. Graphical Programming. Arduino Programming. Python Programming. Node JS ProgrammingSpecifications. Microcontroller: ATMEGA2560-16AU. Input Voltage: DC 6V-12V. Operating Voltage: DC 5V. I/O Pins: 43. Serial Ports: 3. I2C Interface: 1. SPI Interface: 1. Analog Input Pins: 15. DC Current per I/O Pin: 20mA. Flash Memory: 256KB. SRAM: 8KB. EEPROM: 4KB. Clock Speed: 16 MHz. Red Pin: Power output/motor output. Yellow Pin: I/O pin. Blue Pin: Wireless communication interface. Black Pin: Power GND. Green Interface: Power output/motor output. Weight: 12 lbs- SKU: AZTY22814`, //String - the description of the product
+        image : 'GOBI_00011.jpg',
+        originalSource: 'https://www.walmart.ca/en/ip/Makeblock-MAK-90040-Ultimate-10-in-1-Programmable-Robot-Kit-for-9th-12th/PRD5QKTCU3O2Q3O'
+    },
+    {
+        id : "GOBI_00012",
+        name : `4FT AIRBLOWN® INFLATABLE SNOWMAN`,
+        price : 19.98,
+        qtyOnHand : 107,
+        maxPerCustomer : 2, 
+        category : "Gifts & Holidays", 
+        costOfShipping : 1.99, 
+        reviews : [
+            {
+                author: "Santa",
+                stars: 5,
+                date: "2019-12-01",
+                commentTitle: "Amazing Guy",
+                comment: `I miss this guy so much, but now I see he is making a bunch of families happy and that comforts me a lot.`
+            },
+            {
+                author: "Jiz",
+                stars: 4.5,
+                date: "2019-12-09",
+                commentTitle: "Smaller than imagined, but still super!",
+                comment: `I thought it would be higher, but anyway, made my son happy and also his friends, so it is still super and almost 5 stars. I still regret the size.`
+            }
+        ], 
+        description : `Delight guests and passersby with an Airblown® Inflatable snowman decked out for the season! Setup is super simple. Just plug it in, stake it down and watch the magic unfold. Display this whimsical outdoor decoration as a standalone or combine it with other Airblown® Inflatables to create a custom scene. It's also perfect as an indoor Christmas decoration for parties and celebrations. Made of durable fabric, plastic and metal, this holiday inflatable lights up for nighttime visibility. Includes everything needed for easy setup.`, //String - the description of the product
+        image : 'GOBI_00012.jpg',
+        originalSource: 'https://www.walmart.ca/en/ip/4ft-airblown-inflatable-snowman/6000199400630'
+    },
+    {
+        id : "GOBI_00013",
+        name : `Urban Planet Men's Elf Hooded Ugly Christmas Sweater`,
+        price : 20.00,
+        qtyOnHand : 53,
+        maxPerCustomer : 4, 
+        category : "Gifts & Holidays", 
+        costOfShipping : 0.99, 
+        reviews : [], 
+        description : `Don we now our ugly sweaters! Ugly Christmas sweaters are back and better than ever - wear yours to a holiday party or on Christmas Eve. Features a knit fabric, hood, jingle bells, pom poms and crew neckline.
+        Chest: 30" Length: 30" Sleeve: 32"
+        Measured Size: Medium - Model's Height: 6'1
+        100% Acrylic
+        Machine Wash Cold Water - Gentle With Like Colours  No Bleach - Tumble Dry Low
+        Imported by Urban Heritage`, //String - the description of the product
+        image : 'GOBI_00013.jpg',
+        originalSource: 'https://www.walmart.ca/en/ip/Urban-Planet-Men-s-Elf-Hooded-Ugly-Christmas-Sweater/3P0OUZD68SEP'
+    },
+    {
+        id : "GOBI_00014",
+        name : `Urban Kids Youth Girl's Youth Pug Reindeer Ugly Christmas Sweater`,
+        price : 17.50,
+        qtyOnHand : 102,
+        maxPerCustomer : 3, 
+        category : "Gifts & Holidays", 
+        costOfShipping : 1.99, 
+        reviews : [], 
+        description : `Ugly Christmas sweaters perfect for holiday festivities. Features knit fabric, crew neckline and sequins.
+        Chest: 23" Length: 18.5" Sleeve: 20"
+        Measured Size: 7-8
+        100% Acrylic
+        Machine Wash Cold Water - Gentle With Like Colours  No Bleach - Tumble Dry Low
+        Imported by Urban Heritage Youth`, //String - the description of the product
+        image : 'GOBI_00014.jpg',
+        originalSource: 'https://www.walmart.ca/en/ip/Urban-Kids-Youth-Girl-s-Youth-Pug-Reindeer-Ugly-Christmas-Sweater/65GJPH0MJRUO?rrid=richrelevance'
+    },
+    {
+        id : "GOBI_00015",
+        name : `Apple iPad 32GB (7th Generation)`,
+        price : 429.00,
+        qtyOnHand : 67,
+        maxPerCustomer : 2, 
+        category : "Electronics", 
+        costOfShipping : 10.99, 
+        reviews : [
+            {
+                author: "ShariqH",
+                stars: 5,
+                date: "2019-12-10",
+                commentTitle: "Great product. Beautiful Display",
+                comment: `Bought this for my 11 yr old son and its really great for both school work as well as play. the 7th Gen is really good.`
+            }
+        ], 
+        description : `Create, learn, work and play like never before on the immersive 10.2-inch Retina display. Support for the Smart Keyboard and Apple Pencil.1 Over a million apps available on the App Store, including Apple Arcade games. Front and back cameras. Wi-Fi. All-day battery life.3 And it comes with iPadOS, which unlocks a whole new world of capability. It's unbelievably fun. And unmistakably iPad.
+        •10.2-inch Retina display1
+        •A10 Fusion chip
+        •Touch ID fingerprint sensor
+        •8MP back camera, 1.2MP FaceTime HD front camera
+        •Stereo speakers
+        •802.11ac Wi-Fi and LTE Advanced cellular data2
+        •Up to 10 hours of battery life3
+        •Lightning connector for charging and accessories
+        •Support for Smart Keyboard and Apple Pencil1
+        •iPadOS with intuitive multitasking, new Home screen and all the great features of iOS 13
+        Legal
+        Apps are available on the App Store. Title availability is subject to change.
+        1Accessories are sold separately. Apple Pencil (1st generation) is compatible with 9.7-inch iPad Pro, 10.5-inch iPad Pro, 12.9-inch iPad Pro (1st and 2nd generations), iPad Air (3rd generation), iPad (6th and 7th generations), iPad (6th generation) and iPad mini (5th generation). Smart Keyboard is compatible with iPad (7th generation), iPad Air (3rd generation) and 10.5-inch iPad Pro.
+        3Battery life varies by use and configuration. See www.apple.com/ca/batteries for more information.`, //String - the description of the product
+        image : 'GOBI_00015.jpg',
+        originalSource: 'https://www.walmart.ca/en/ip/apple-ipad-32gb-7th-generation-gold/6000200476450'
     }
+
 ];
 
 /* source for the items:

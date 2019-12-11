@@ -73,10 +73,10 @@ section{
 
 .modal{
     position: absolute;
-    width: 10vh;
+    width: 33vh;
     min-height: 50vh;
-    top: 12vh;
-    left: 10vh;
+    top: 10%;
+    left: 20%;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
@@ -247,7 +247,7 @@ section{
     }
 
     header{
-        position:absolute;
+        position:sticky;
         width:100%;
     }
 
@@ -264,7 +264,7 @@ section{
     }
 
     main{
-        top: 55px;
+        top: 0px;
     }
 
     .modal{
@@ -281,7 +281,7 @@ section{
     }
 
     header{
-        position:absolute;
+        position:sticky;
         width:100%;
     }
 
@@ -298,7 +298,7 @@ section{
     }
 
     main{
-        top: 55px;
+        top: 0px;
     }
 
     .modal{

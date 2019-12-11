@@ -8,7 +8,7 @@ const populateCatalogFilter = function(){
     });
     //sort category items in ascendent alphabetical
     categories.sortAscendant();
-    console.log("categories array filled out:",categories);
+    //console.log("categories array filled out:",categories);
 
     //iterate through each item of categories
     //each iteration creates an option element
@@ -16,7 +16,7 @@ const populateCatalogFilter = function(){
     //according to the category item
     var category;
     categories.forEach((item)=>{
-        console.log("category in the loop=",item);
+        //console.log("category in the loop=",item);
         category = document.createElement("option");
         category.value = item.replace(/\s+/gi,"").toLowerCase();
         category.innerHTML = item;
@@ -26,17 +26,27 @@ const populateCatalogFilter = function(){
 }
 
 const populateCurrencyDropBox = function(){
-    var currencySelectionElement = document.getElementById("currencySelection");
+    
+    let currencySelectionElement = document.getElementById("currencySelection");
     console.log("currencySelectionElement",currencySelectionElement);
-    var currencyOption;
+    let currencyOption;
+    let currencyOptionOnMainMenu = document.querySelector(`nav#mainMenu > ul > li > ul.goToCurrency`);
     currenciesList.forEach((item,index)=>{
-        console.log("populateCurrencyDropBox item iterated = ",item);
+        //populate currency dropbox at catalog screen
+        //console.log("populateCurrencyDropBox item iterated = ",item);
         currencyOption = document.createElement("option");
-        console.log("currencyOption element=",currencyOption);
+        //console.log("currencyOption element=",currencyOption);
         currencyOption.value = index;
-        console.log("option innerHTML being inserted=",item.currencyName);
+        //console.log("option innerHTML being inserted=",item.currencyName);
         currencyOption.innerHTML = item.currencySymbol + "$";
-        console.log("option = ",currencyOption);
+        //console.log("option = ",currencyOption);
         currencySelectionElement.appendChild(currencyOption);
+        
+        //populate main menu
+        let currencyItemOnCurrencyMenu = document.createElement("li");
+        currencyOptionOnMainMenu.appendChild(currencyItemOnCurrencyMenu);
+        currencyItemOnCurrencyMenu.textContent = item.currencySymbol + "$";
+        currencyItemOnCurrencyMenu.setAttribute("index",index);
     });
+    
 }

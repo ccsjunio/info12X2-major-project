@@ -20,18 +20,21 @@ nav#cartSection{
 #messageEmptyCart{
     order: 1;
     flex: 1;
-    display: block;
+    display: flex;
     font-size: 2rem;
     font-weight: bolder;
     padding: 10px;
     text-align: center;
     color: #c10000;
     margin-top: 30px;
+    flex-flow: column;
+    align-items: center;
 }
 
 #messageEmptyCart .goToCatalog{
     color: #7e0000;
     font-size:1.95rem;
+    cursor:pointer;
 }
 
 #messageEmptyCart img{
@@ -64,10 +67,14 @@ nav#cartSection{
     border-bottom: 1px solid #ccc;
     padding: 5px;
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     font-size: 0.8rem;
     align-items: center;
     text-align: center;
+}
+
+#cartItems .cartItem[itemId]{
+    border:1px solid black;
 }
 
 .cartItem .qtyColumn{
@@ -77,34 +84,38 @@ nav#cartSection{
     flex: 1;
     order: 1;
     display:flex;
-    flex-flow: column;
+    flex-flow: row;
 }
 
 .cartItem .qtyColumn .qtyColumnInformation{
     flex: 2;
     order: 1;
-    border: 1px solid #9e6600;
-    border-radius: 10px 10px 0 0;
-    padding: 5px;
+    border: 2px solid #e49400;
+    border-radius: 8px;
+    padding: 11px;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: #e49400;
 }
 
 .cartItem .qtyColumn .qtyColumnAddSubtractContainer{
     order: 2;
     padding: 0 5px 0 5px;
-    font-size: 1em;
+    font-size: 1.5rem;
     border-radius: 0px;
     background-color: white;
-    color: red;
+    color: #e49400;
     display: flex;
     flex-flow: row;
     align-items: center;
     text-align: center;
     font-weight: bolder;
-    border-right: 1px solid red;
-    border-left: 1px solid red;
+    border: 2px solid #e49400;
+    border-radius: 10px;
+    margin-right:15px;
 }
 .cartItem .qtyColumn .qtyColumnAdd{
-    order: 2;
+    order: 3;
     padding: 5px 5px 5px 10px;
     flex: 1;
     order: 2;
@@ -119,11 +130,13 @@ nav#cartSection{
 
 .cartItem .qtyColumn .qtyColumnRemove{
     order: 3;
-    padding: 5px;
+    padding: 13px;
     font-size: 0.8em;
-    border-radius: 0 0 10px 10px;
+    border-radius: 7px;
     background-color: red;
-    color: white
+    color: white;
+    font-weight: bolder;
+    font-size: 1.5rem;
 }
 
 .cartItem .nameColumn{
@@ -132,6 +145,7 @@ nav#cartSection{
     color: #555;
     flex: 5;
     order: 3;
+    font-size: 1.3rem;
 }
 
 .cartItem .priceColumn{
@@ -141,6 +155,7 @@ nav#cartSection{
     flex: 2;
     order: 4;
     text-align: right;
+    font-size: 1.4rem;
 }
 
 .cartItem .imageColumn{
@@ -149,14 +164,14 @@ nav#cartSection{
     font-weight: bolder;
     flex: 2;
     order: 2;
-    width: 100%;
+    width: 50%;
 }
 
 .cartItem .imageColumn img{
     margin-left: 10px;
     width: 100%;
 }
-}
+
 
 #cartItems .totalAmountBeforeTaxes{
     font-size: 1rem;
@@ -224,6 +239,129 @@ nav#cartSection{
     padding: 0 20px 10px 20px;
     order: 2;
 }
+
+#cartItems .paymentContainer{
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    font-size: 1.5rem;
+}
+
+#cartItems .paymentContainer .checkOutButton{
+    order: 1;
+    flex: 1;
+    background-color: #e49400;
+    color: white;
+    font-weight: bolder;
+    padding: 10px;
+    margin-bottom: 13px;
+    cursor:pointer;
+}
+
+#cartItems .paymentContainer .paymentCanvas{
+    flex:1;
+    order:2;
+    display: none;
+}
+
+#cartActionButtons .goToCheckout{
+    cursor:pointer;
+}
+
+#cartActionButtons .actionEmptyCart{
+    cursor:pointer;
+}
+
+#cartActionButtons .goToCatalog{
+    cursor:pointer;
+}
+
+@media only screen and (min-width:455px){
+    #cartItems .cartItem{
+        flex: 1;
+        border-bottom: 1px solid #ccc;
+        padding: 5px;
+        display: flex;
+        flex-flow: row;
+        font-size: 0.8rem;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .cartItem .qtyColumn{
+        padding: 3px;
+        color: #9e6600;
+        font-weight: bolder;
+        flex: 1;
+        order: 1;
+        display:flex;
+        flex-flow: column;
+    }
+    
+    .cartItem .qtyColumn .qtyColumnInformation{
+        flex: 2;
+        order: 1;
+        border: 1px solid #9e6600;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+        margin-right:0px;
+        
+    }
+    
+    .cartItem .qtyColumn .qtyColumnAddSubtractContainer{
+        order: 2;
+        padding: 0 5px 0 5px;
+        font-size: 1em;
+        border-radius: 0px;
+        background-color: white;
+        color: red;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        text-align: center;
+        font-weight: bolder;
+        border-right: 1px solid red;
+        border-left: 1px solid red;
+        margin-right:0px;
+    }
+    .cartItem .qtyColumn .qtyColumnAdd{
+        order: 2;
+        padding: 5px 5px 5px 10px;
+        flex: 1;
+        order: 2;
+        border-right: 1px solid white;
+    }
+    .cartItem .qtyColumn .qtyColumnSubtract{
+        order: 1;
+        padding: 5px 10px 5px 5px;
+        flex: 1;
+        order: 1;
+    }
+    
+    .cartItem .qtyColumn .qtyColumnRemove{
+        order: 3;
+        padding: 5px;
+        font-size: 0.8em;
+        border-radius: 0 0 10px 10px;
+        background-color: red;
+        color: white
+    }
+
+    .cartItem .imageColumn{
+        padding: 0px;
+        color: #9e6600;
+        font-weight: bolder;
+        flex: 2;
+        order: 2;
+        width: 100%;
+    }
+    
+    .cartItem .imageColumn img{
+        margin-left: 10px;
+        width: 100%;
+    }
+}
+
 
 
 

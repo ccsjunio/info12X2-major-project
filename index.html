@@ -21,29 +21,10 @@
         <link href="./styles/cartMenu.css" type="text/css" rel="stylesheet"/>
         <link href="./styles/cart.css" type="text/css" rel="stylesheet"/>
         <link href="./styles/details.css" type="text/css" rel="stylesheet"/>
+        <link href="./styles/sources.css" type="text/css" rel="stylesheet"/>
         <link href="./styles/mainMenu.css" type="text/css" rel="stylesheet"/>
 
-        <!-- link to javascript files -->
-        <script src="./js/components/Cart.js" type="text/javascript"></script>
-        <script src="./js/components/Store.js" type="text/javascript"></script>
-        <script src="./js/components/CatalogList.js" type="text/javascript"></script>
-        <script src="./js/components/StoreItem.js" type="text/javascript"></script>
-        <script src="./js/components/CartItem.js" type="text/javascript"></script>
-        <script src="./js/components/GreyArea.js" type="text/javascript"></script>
-        <script src="./js/components/Menu.js" type="text/javascript"></script>
-        <script src="./js/components/DisplayElement.js" type="text/javascript"></script>
-        <script src="./js/controllers/time.js" type="text/javascript"></script>
-        <script src="./js/controllers/filters.js" type="text/javascript"></script>
-        <script src="./js/controllers/catalog.js" type="text/javascript"></script>
-        <script src="./js/controllers/cart.js" type="text/javascript"></script>
-        <script src="./js/controllers/menus.js" type="text/javascript"></script>
-        <script src="./js/controllers/details.js" type="text/javascript"></script>
-        <script src="./js/controllers/greyArea.js" type="text/javascript"></script>
-        <script src="./js/testing/generalTest.js" type="text/javascript"></script>
-        <script src="./assets/data/initialStorage.js" type="text/javascript"></Script>
-        <script src="./assets/data/currencies.js" type="text/javascript"></Script>
-        <script src="https://www.paypal.com/sdk/js?client-id=AbGPiXnmSO0JICcEl2it7p4r6fBF1xDVQVZjHe5sFs2WOXjSWT9zHSCU-Ild4PSurXGMH20q3oVKqXVd"></script>
-        <script src="./js/main.js" type="text/javascript"></script>
+        
     </head>
     <body onload="initialize();">
         <main>
@@ -89,7 +70,7 @@
             </section>
             <section id="checkoutSection">
             </section>
-            <section id="resourceSection">
+            <section id="sourcesSection">
             </section>
             <section id="detailsSection">
             </section>
@@ -109,9 +90,16 @@
                         <div id="closeMenu"><i class="material-icons">close</i></div>
                         <li><a href="#home" class="goToHome">Catalog</a></li>
                         <li><a href="#cart" class="goToCart">Cart</a></li>
-                        <li><a href="#currency" class="goToCurrency">Currency</a></li>
+                        <li>
+                            <a href="#currency" class="goToCurrency">
+                                Currency 
+                                <i class="material-icons expand-more">expand_more</i>
+                                <i class="material-icons expand-less">expand_less</i>
+                            </a>
+                            <ul class="goToCurrency"></ul>
+                        </li>
                         <li><a href="#checkout" class="goToCheckout">Checkout</a></li>
-                        <li><a href="#sources" class="goToSources"></a>Image Sources</li>
+                        <li><a href="#sources" class="goToSources">Image Sources</a></li>
                     </ul>
                     <div class="greyArea"></div>
                 </nav>
@@ -135,8 +123,30 @@
             </container>
         </header>
         
-        
-
         <div id="greyArea"></div>
+
+        <!-- link to javascript files -->
+        <script src="./js/components/Cart.js" type="text/javascript"></script>
+        <script src="./js/components/Store.js" type="text/javascript"></script>
+        <script src="./js/components/CatalogList.js" type="text/javascript"></script>
+        <script src="./js/components/StoreItem.js" type="text/javascript"></script>
+        <script src="./js/components/CartItem.js" type="text/javascript"></script>
+        <script src="./js/components/GreyArea.js" type="text/javascript"></script>
+        <script src="./js/components/Menu.js" type="text/javascript"></script>
+        <script src="./js/components/DisplayElement.js" type="text/javascript"></script>
+        <script src="./js/controllers/time.js" type="text/javascript"></script>
+        <script src="./js/controllers/filters.js" type="text/javascript"></script>
+        <script src="./js/controllers/catalog.js" type="text/javascript"></script>
+        <script src="./js/controllers/cart.js" type="text/javascript"></script>
+        <script src="./js/controllers/menus.js" type="text/javascript"></script>
+        <script src="./js/controllers/sources.js" type="text/javascript"></script>
+        <script src="./js/controllers/details.js" type="text/javascript"></script>
+        <script src="./js/controllers/greyArea.js" type="text/javascript"></script>
+        <script src="./js/testing/generalTest.js" type="text/javascript"></script>
+        <script src="./assets/data/initialStorage.js" type="text/javascript"></Script>
+        <script src="./assets/data/currencies.js" type="text/javascript"></Script>
+        <script src="https://www.paypal.com/sdk/js?client-id=AbGPiXnmSO0JICcEl2it7p4r6fBF1xDVQVZjHe5sFs2WOXjSWT9zHSCU-Ild4PSurXGMH20q3oVKqXVd"></script>
+        <script src="./js/main.js" type="text/javascript"></script>
+
     </body>
 </html>

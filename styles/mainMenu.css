@@ -41,3 +41,26 @@ header container nav#mainMenu{
  header container nav#mainMenu li a:link{color:rgb(58,57,57);}
  header container nav#mainMenu li a:visited{color:rgb(58,57,57);}
  header container nav#mainMenu li a:active{color:rgb(58,57,57);}
+
+header container nav#mainMenu li ul.goToCurrency{
+    margin-left:5px;
+    display:none;
+}
+
+header container nav#mainMenu li ul.goToCurrency li{
+    margin-left:5px;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+header container nav#mainMenu ul li a{
+    display: flex;
+    flex-flow: row;
+}
+
+header container nav#mainMenu ul li a .expand-less{
+    display:none;
+}
+header container nav#mainMenu ul li a .expand-more{
+    display:inline;
+}

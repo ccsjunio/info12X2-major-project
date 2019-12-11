@@ -35,6 +35,7 @@ const URL_PATHNAME = window.location.pathname;
 const URL_HOSTNAME = window.location.hostname;
 const URL_HOST = window.location.host;
 const URL_PUBLIC = URL_ORIGIN + URL_PATHNAME.substring(0,URL_PATHNAME.lastIndexOf("/")) + "/public";
+const URL_ASSETS = URL_ORIGIN + URL_PATHNAME.substring(0,URL_PATHNAME.lastIndexOf("/")) + "/assets";
 
 //detect the tentative change of page by user
 //TODO: to deal with this
@@ -87,7 +88,8 @@ const initialize = () => {
     //assign details section to a instance of DisplayElement
     detailsSection = new DisplayElement("detailsSection",{category:"section",exclusive:true});
     //assign resource section to a instance of DisplayElement
-    checkoutResources = new DisplayElement("resourcesSection",{category:"section",exclusive:true});
+    sourcesSection = new DisplayElement("sourcesSection",{category:"section",exclusive:true});
+    
 
     //assign menus to a instance of DisplayElement
     cartMenu = new DisplayElement("cartMenu",{category:"nav.menu",exclusive:true,"greyArea":true});
@@ -134,6 +136,31 @@ const changeCurrency = function(){
     updateCart();
 }
 
+//TODO:
+const changeCurrencyFromMainMenu = function(){
+    console.log("currencies into changeCurrencyFromMainMenu=",currenciesList);
+    let currencyOption = event.target.getAttribute("index");
+    currencyInformation.currencySymbol = currenciesList[+currencyOption].currencySymbol;
+    currencyInformation.currencyName = currenciesList[+currencyOption].currencyName;
+    currencyInformation.currencyRate = parseFloat(+currenciesList[+currencyOption].currencyRate);
+    currencyInformation.currencyTaxRate = parseFloat(+currenciesList[+currencyOption].currencyTaxRate);
+    console.log("currencyInformation = ",currencyInformation);
+    //change only the prices information so that the page does not have to be reloaded
+    let currencySymbolElements = document.querySelectorAll(".currencySymbol");
+    let currencyPriceElements = document.querySelectorAll(".currencyPrice");
+    currencySymbolElements.forEach((element)=>{
+        element.textContent = currencyInformation.currencySymbol + "$ ";
+    });
+    currencyPriceElements.forEach((element)=>{
+        element.textContent = (parseFloat(+currencyInformation.currencyRate) * parseFloat(+element.getAttribute("price"))).toFixed(2);
+    });
+    //update cart menu
+    updateCart();
+    mainMenu.hide();
+    document.querySelector(`select#currencySelection option[value='${currencyOption}']`).setAttribute("selected","selected");
+    document.querySelectorAll(`select#currencySelection option:not([value='${currencyOption}'])`).forEach((element)=>element.removeAttribute("selected"));
+}
+
 //toggling elements
 
 const switchToCart = function(){
@@ -141,6 +168,7 @@ const switchToCart = function(){
     //control visibilities
     cartSection.show();
     wrapUpSwitch();
+    hidePaymentCanvas();
 
 }//end of switchToCart
 
@@ -163,10 +191,16 @@ const switchToCurrency = function(){
 const switchToCheckout = function(){
     
     //control visibilities
-    checkoutSection.show();
+    cartSection.show();
     wrapUpSwitch();
+    showPaymentCanvas();
 
 }//end of switchToCurrency
+
+const switchToSources = function(){
+    showSourcesSection();
+    wrapUpSwitch();
+} // switchToSources
 
 const wrapUpSwitch = function(){
     turnOffGreyArea();
@@ -326,6 +360,36 @@ const switchToDetails = function(){
     showElementDetails(itemId);
 } // switchToDetails
 
+//TODO:
+const toggleCurrencyMenu = ()=>{
+    let currencyMenu = document.querySelector(`nav#mainMenu ul li ul.goToCurrency`);
+    currencyMenu.style.display === "none" ? showCurrencyMenu() : hideCurrencyMenu();
+}
+
+//TODO:
+const showCurrencyMenu = ()=>{
+    let currencyMenu = document.querySelector(`nav#mainMenu ul li ul.goToCurrency`);
+    let expandMore = document.querySelector(`header container nav#mainMenu ul li a .expand-more`);
+    let expandLess = document.querySelector(`header container nav#mainMenu ul li a .expand-less`);
+    currencyMenu.style.display = "flex";
+    currencyMenu.style.flexFlow = "column";
+    expandMore.style.display = "none";
+    expandLess.style.display = "inline";
+
+}
+
+
+//TODO:
+const hideCurrencyMenu = ()=>{
+    let currencyMenu = document.querySelector(`nav#mainMenu ul li ul.goToCurrency`);
+    let expandMore = document.querySelector(`header container nav#mainMenu ul li a .expand-more`);
+    let expandLess = document.querySelector(`header container nav#mainMenu ul li a .expand-less`);
+    currencyMenu.style.display = "none";
+    expandMore.style.display = "inline";
+    expandLess.style.display = "none";
+
+}
+
 /*
     bind element events at catalog page
 */
@@ -333,8 +397,11 @@ const bindElementsOnCatalog = ()=>{
     document.querySelectorAll(".storeItemAddAmountToCartColumn").forEach((element)=>element.addEventListener("click",addAmountToGoToCart,false));
     document.querySelectorAll(".storeItemSubtractAmountFromCartColumn").forEach((element)=>element.addEventListener("click",subtractAmountToGoToCart,false));
     //bind events to menu 
-    document.querySelector("nav#menuIcon").addEventListener("click",mainMenuToggle,false);
+    document.querySelector("nav#menuIcon, nav#menuIcon #hamburguer").addEventListener("click",mainMenuToggle,false);
     document.querySelector("nav#mainMenu #closeMenu").addEventListener("click",mainMenuHide,false);
+    //bind to currency
+    document.querySelector(`.goToCurrency`).addEventListener("click",toggleCurrencyMenu,false);
+    document.querySelectorAll(`ul.goToCurrency li`).forEach((element)=>element.addEventListener("click",changeCurrencyFromMainMenu,false));
     //bind click to cart icon
     document.querySelector("nav#cart").addEventListener("click",cartMenuToggle,false);
     //bind close cart menu button
@@ -345,16 +412,15 @@ const bindElementsOnCatalog = ()=>{
     document.querySelectorAll(".goToCart").forEach((element)=>element.addEventListener("click",switchToCart));
     //bind to switch to catalog
     document.querySelectorAll(".goToHome,.goToCatalog").forEach((element)=>element.addEventListener("click",switchToCatalog));
-    //bind to switch to currency
-    document.querySelectorAll(".goToCurrency").forEach((element)=>element.addEventListener("click",switchToCurrency));
     //bind to switch to checkout
     document.querySelectorAll(".goToCheckout").forEach((element)=>element.addEventListener("click",switchToCheckout));
+    //bind to switch to sources
+    document.querySelectorAll(".goToSources").forEach((element)=>element.addEventListener("click",switchToSources));
     //bind to emptyCart
     document.querySelectorAll(".actionEmptyCart").forEach((element)=>element.addEventListener("click",confirmEmptyingCart));
     //bind show more of catalog button
     document.querySelectorAll(".moreOfThis").forEach((element)=>element.addEventListener("click",switchToDetails));
 }
-
 
 //Sorts contents of an array ascendantly
 //based on example given at 

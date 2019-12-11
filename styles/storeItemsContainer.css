@@ -106,25 +106,28 @@ section#catalogSection #filter #catalogFilter select#currencySelection{
     border-radius: 5px;
     font-size: 0.8rem;
     order:8;
+    cursor:pointer;
 }
 
 .storeItemAddAmountToCartColumn{
     order:3;
+    cursor:pointer;
     
 }
 
 .storeItemSubtractAmountFromCartColumn{
     order:1;
+    cursor:pointer;
     
 }
 
 .storeItemAmountToCartColumn{
-    order:2;
+    order: 2;
     background-color: white;
     color: black;
     padding: 5px;
     border-radius: 5px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bolder;
 }
 
@@ -140,6 +143,8 @@ section#catalogSection #filter #catalogFilter select#currencySelection{
     color: white;
     padding: 3px;
     border-radius: 5px;
+    cursor:pointer;
+    margin-left:5px;
 }
 
 @media only screen and (min-width:400px){
@@ -247,12 +252,12 @@ section#catalogSection #filter #catalogFilter select#currencySelection{
     }
     
     .storeItemAmountToCartColumn{
-        order:2;
+        order: 2;
         background-color: white;
         color: black;
         padding: 5px;
         border-radius: 5px;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: bolder;
     }
     
@@ -268,6 +273,8 @@ section#catalogSection #filter #catalogFilter select#currencySelection{
         color: white;
         padding: 3px;
         border-radius: 5px;
+        cursor:pointer;
+        margin-left:5px;
     }
 }
 
@@ -390,12 +397,12 @@ section#catalogSection #filter #catalogFilter select#currencySelection{
     }
     
     .storeItemAmountToCartColumn{
-        order:2;
+        order: 2;
         background-color: white;
         color: black;
         padding: 5px;
         border-radius: 5px;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: bolder;
     }
     
@@ -411,6 +418,8 @@ section#catalogSection #filter #catalogFilter select#currencySelection{
         color: white;
         padding: 3px;
         border-radius: 5px;
+        cursor:pointer;
+        margin-left:5px;
     }
 }
 
@@ -526,12 +535,12 @@ section#catalogSection #filter #catalogFilter select#currencySelection{
     }
     
     .storeItemAmountToCartColumn{
-        order:2;
+        order: 2;
         background-color: white;
         color: black;
         padding: 5px;
         border-radius: 5px;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: bolder;
     }
     
@@ -547,5 +556,7 @@ section#catalogSection #filter #catalogFilter select#currencySelection{
         color: white;
         padding: 3px;
         border-radius: 5px;
+        cursor:pointer;
+        margin-left:5px;
     }
 }
