@@ -376,7 +376,7 @@ const submitNewReview = ()=>{
     let review = reviewField.value;
     let submitButton = document.querySelector(`section#detailsSection .container[itemId='${itemId}'] .reviewsContainer .newReviewContainer .newReviewForm .reviewSubmitButton`);
     if(author.replace(/\s+/gi,"") == "" || review.replace(/\s+/gi,"") == ""){
-        submitButton.textContent = "neither author nor review can not be blank!";
+        submitButton.textContent = "neither author nor review can be blank!";
         submitButton.classList.add("submitButtonBlankError");
         submitButton.setAttribute("disabled","disabled");
         window.setTimeout(()=>{
@@ -539,7 +539,7 @@ const handleDecrementQuantityToGoToCartFromDetails = ()=>{
     const qtyOnHand = parseInt(+store.items.findPerId(itemId).qtyOnHand);
     let qtyToCart = parseInt(+qtyToCartElement.getAttribute("qtytocart"));
     
-    if((qtyToCart-1+qtyInCart)>=0){
+    if((qtyToCart-1)>=0){
         qtyToCart -- ;
         qtyToCartElement.textContent = qtyToCart;
         qtyToCartElement.setAttribute("qtytocart",qtyToCart);

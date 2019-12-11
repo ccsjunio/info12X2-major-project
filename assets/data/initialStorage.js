@@ -222,7 +222,7 @@ const initialStorage = [
         price : 179.92,
         qtyOnHand : 50,
         maxPerCustomer : 5, 
-        category : "Clothes", 
+        category : "Toys", 
         costOfShipping : 10.99, 
         reviews : [
             {
